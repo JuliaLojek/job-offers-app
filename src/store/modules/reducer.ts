@@ -1,6 +1,6 @@
 import { StateModel, ACTION_TYPES, ActionModel } from "./models";
 
-const INITIAL_STATE: StateModel = {
+export const INITIAL_STATE: StateModel = {
   isNavOpen: false,
   offersList: [],
   searchPhrase: "",
@@ -13,7 +13,7 @@ export default (state = INITIAL_STATE, action: ActionModel) => {
         ...state,
         isNavOpen: !state.isNavOpen,
       });
-    case ACTION_TYPES.FETCH_OFFERS:
+    case ACTION_TYPES.SET_OFFERS:
       return (state = {
         ...state,
         offersList: action.value,

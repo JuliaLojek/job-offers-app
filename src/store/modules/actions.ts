@@ -32,18 +32,34 @@ export const ACTION_FETCH_OFFERS = (): ThunkAction<
   unknown,
   Action
 > => async (dispatch) => {
-  const offersList: OfferModel[] = await fetchOffers();
-  function fetchOffers() {
+  // const offersList: OfferModel[] = await fetchOffers();
+
+  // function fetchOffers() {
+  //   const offersListData = localStorage.getItem("myJobOffers");
+  //   let offersList: OfferModel[];
+  //   if (typeof offersListData === "string") {
+  //     offersList = JSON.parse(offersListData);
+  //   } else {
+  //     offersList = [];
+  //   }
+  //   return Promise.resolve(offersList);
+  // }
+
+  // dispatch(ACTION_SET_OFFERS(offersList));
+
+  return new Promise((resolve, reject) => {
     const offersListData = localStorage.getItem("myJobOffers");
-    let offersList: OfferModel[];
-    if (typeof offersListData === "string") {
-      offersList = JSON.parse(offersListData);
-    } else {
-      offersList = [];
-    }
-    return Promise.resolve(offersList);
-  }
-  dispatch(ACTION_SET_OFFERS(offersList));
+    resolve(offersListData);
+    reject(new Error("Fetching data from local storage failed"));
+  })
+    .then((response) => {
+      if (typeof response === "string") {
+        return JSON.parse(response);
+      } else {
+        return [];
+      }
+    })
+    .then((response) => dispatch(ACTION_SET_OFFERS(response)));
 };
 
 export const ACTION_SET_OFFERS = (offersList: OfferModel[]) => {
