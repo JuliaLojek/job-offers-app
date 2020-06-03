@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 20px;
   width: 90%;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .formBox {
@@ -34,12 +34,6 @@
 
 .errorBox {
   margin-bottom: 16px;
-  color: #ff0000;
+  color: var(--error-color);
   font-size: 0.9em;
-}
-
-@media (min-width: 600px) {
-  .formBox {
-    flex-direction: row;
-  }
 }
