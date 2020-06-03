@@ -1,3 +1,13 @@
 .btn {
+  cursor: pointer;
   background: var(--secondary-color);
+  color: #fff;
+  padding: 4px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn:focus {
+  outline: none;
 }

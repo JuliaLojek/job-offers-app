@@ -1,0 +1,45 @@
+.mainBox {
+  background: var(--main-color);
+  margin: 0 auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+}
+
+.formBox {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputsBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 100%;
+  margin: 4px 0;
+  padding: 4px;
+  border: 2px solid var(--secondary-color);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.textarea {
+  min-height: 60px;
+}
+
+.errorBox {
+  margin-bottom: 16px;
+  color: #ff0000;
+  font-size: 0.9em;
+}
+
+@media (min-width: 600px) {
+  .formBox {
+    flex-direction: row;
+  }
+}
