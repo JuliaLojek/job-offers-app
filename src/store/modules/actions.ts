@@ -24,12 +24,12 @@ export const ACTION_TOGGLE_NAV = () => {
 };
 
 export const ACTION_FETCH_OFFERS = (): ThunkAction<
-  void,
+  Promise<any>,
   StateModel,
   unknown,
   Action
 > => async (dispatch) => {
-  fetchOffersListFromLS().then((response) =>
+  return fetchOffersListFromLS().then((response) =>
     dispatch(ACTION_SET_OFFERS(response))
   );
 };
@@ -43,8 +43,8 @@ export const ACTION_SET_OFFERS = (offersList: OfferModel[]) => {
 
 export const ACTION_ADD_OFFER = (
   offer: OfferModel
-): ThunkAction<void, StateModel, unknown, Action> => async (dispatch) => {
-  fetchOffersListFromLS()
+): ThunkAction<Promise<any>, StateModel, unknown, Action> => async (dispatch) => {
+  return fetchOffersListFromLS()
     .then((prevList) => {
       return [...prevList, offer];
     })
@@ -56,7 +56,7 @@ export const ACTION_ADD_OFFER = (
 
 export const ACTION_DELETE_OFFER = (
   offerId: number
-): ThunkAction<void, StateModel, unknown, Action> => async (dispatch) => {
+): ThunkAction<Promise<any>, StateModel, unknown, Action> => async (dispatch) => {
   fetchOffersListFromLS()
     .then((prevList) => {
       const newList = prevList.filter((offer: OfferModel) => offer.id !== offerId);
