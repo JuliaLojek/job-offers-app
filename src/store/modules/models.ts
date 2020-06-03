@@ -6,7 +6,7 @@ export enum ACTION_TYPES {
   SET_OFFERS = "SET_OFFERS",
   ADD_OFFER = "ADD_OFFER",
   DELETE_OFFER = "DELETE_OFFER",
-  SEARCH_OFFER = "SEARCH_OFFER",
+  SET_SEARCH_PHRASE = "SET_SEARCH_PHRASE",
 }
 
 export interface ActionModel {

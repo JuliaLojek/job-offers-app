@@ -3,28 +3,25 @@ import { ACTION_TYPES, StateModel } from "./models";
 import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
 
+const fetchOffersListFromLS = () => {
+  return new Promise((resolve, reject) => {
+    const offersListData = localStorage.getItem("myJobOffers");
+    resolve(offersListData);
+    reject(new Error("Fetching data from local storage failed"));
+  }).then((response) => {
+    if (typeof response === "string") {
+      return JSON.parse(response);
+    } else {
+      return [];
+    }
+  });
+};
+
 export const ACTION_TOGGLE_MENU = () => {
   return {
     type: ACTION_TYPES.TOGGLE_MENU,
   };
 };
-
-// export const ACTION_FETCH_OFFERS = () => {
-// return (dispatch) => {
-//   return new Promise((resolve, reject) => {
-//     const offersListData = localStorage.getItem("myJobOffers");
-//     let offersList: OfferModel[];
-//     if (typeof offersListData === "string") {
-//       offersList = JSON.parse(offersListData);
-//     } else {
-//       offersList = [];
-//     }
-//     resolve(offersList);
-//     reject(new Error("Fetching data from local storage failed"));
-//   })
-//     .then(response => dispatch(ACTION_SET_OFFERS(response)))
-//   ;
-// };
 
 export const ACTION_FETCH_OFFERS = (): ThunkAction<
   void,
@@ -32,34 +29,9 @@ export const ACTION_FETCH_OFFERS = (): ThunkAction<
   unknown,
   Action
 > => async (dispatch) => {
-  // const offersList: OfferModel[] = await fetchOffers();
-
-  // function fetchOffers() {
-  //   const offersListData = localStorage.getItem("myJobOffers");
-  //   let offersList: OfferModel[];
-  //   if (typeof offersListData === "string") {
-  //     offersList = JSON.parse(offersListData);
-  //   } else {
-  //     offersList = [];
-  //   }
-  //   return Promise.resolve(offersList);
-  // }
-
-  // dispatch(ACTION_SET_OFFERS(offersList));
-
-  return new Promise((resolve, reject) => {
-    const offersListData = localStorage.getItem("myJobOffers");
-    resolve(offersListData);
-    reject(new Error("Fetching data from local storage failed"));
-  })
-    .then((response) => {
-      if (typeof response === "string") {
-        return JSON.parse(response);
-      } else {
-        return [];
-      }
-    })
-    .then((response) => dispatch(ACTION_SET_OFFERS(response)));
+  fetchOffersListFromLS().then((response) =>
+    dispatch(ACTION_SET_OFFERS(response))
+  );
 };
 
 export const ACTION_SET_OFFERS = (offersList: OfferModel[]) => {
@@ -69,23 +41,36 @@ export const ACTION_SET_OFFERS = (offersList: OfferModel[]) => {
   };
 };
 
-export const ACTION_ADD_OFFER = (offer: OfferModel) => {
-  return {
-    type: ACTION_TYPES.ADD_OFFER,
-    value: offer,
-  };
+export const ACTION_ADD_OFFER = (
+  offer: OfferModel
+): ThunkAction<void, StateModel, unknown, Action> => async (dispatch) => {
+  fetchOffersListFromLS()
+    .then((prevList) => {
+      return [...prevList, offer];
+    })
+    .then((newList) => {
+      localStorage.setItem("myJobOffers", JSON.stringify(newList));
+    })
+    .then(() => dispatch(ACTION_FETCH_OFFERS()));
 };
 
-export const ACTION_DELETE_OFFER = (offerId: string) => {
-  return {
-    type: ACTION_TYPES.DELETE_OFFER,
-    value: offerId,
-  };
+export const ACTION_DELETE_OFFER = (
+  offerId: number
+): ThunkAction<void, StateModel, unknown, Action> => async (dispatch) => {
+  fetchOffersListFromLS()
+    .then((prevList) => {
+      const newList = prevList.filter((offer: OfferModel) => offer.id !== offerId);
+      return newList;
+    })
+    .then((newList) => {
+      localStorage.setItem("myJobOffers", JSON.stringify(newList));
+    })
+    .then(() => dispatch(ACTION_FETCH_OFFERS()));
 };
 
-export const ACTION_SEARCH_OFFER = (phrase: string) => {
+export const ACTION_SET_SEARCH_PHRASE = (phrase: string) => {
   return {
-    type: ACTION_TYPES.SEARCH_OFFER,
+    type: ACTION_TYPES.SET_SEARCH_PHRASE,
     value: phrase,
   };
 };

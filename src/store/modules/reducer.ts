@@ -18,6 +18,11 @@ export default (state = INITIAL_STATE, action: ActionModel) => {
         ...state,
         offersList: action.value,
       });
+    case ACTION_TYPES.SET_SEARCH_PHRASE:
+      return (state = {
+        ...state,
+        searchPhrase: action.value,
+      });
     default:
       return state;
   }
