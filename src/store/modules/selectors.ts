@@ -1,6 +1,10 @@
 import { StateModel } from "./models";
 import { OfferModel } from "../../models/models";
 
+export const selectIsNavOpen = (state: StateModel) => {
+  return state.isNavOpen;
+};
+
 export const selectAllOffers = (state: StateModel) => {
   return state.offersList;
 };

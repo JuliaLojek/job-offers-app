@@ -8,7 +8,7 @@ export const INITIAL_STATE: StateModel = {
 
 export default (state = INITIAL_STATE, action: ActionModel) => {
   switch (action.type) {
-    case ACTION_TYPES.TOGGLE_MENU:
+    case ACTION_TYPES.TOGGLE_NAV:
       return (state = {
         ...state,
         isNavOpen: !state.isNavOpen,

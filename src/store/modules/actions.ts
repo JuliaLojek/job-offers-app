@@ -17,9 +17,9 @@ const fetchOffersListFromLS = () => {
   });
 };
 
-export const ACTION_TOGGLE_MENU = () => {
+export const ACTION_TOGGLE_NAV = () => {
   return {
-    type: ACTION_TYPES.TOGGLE_MENU,
+    type: ACTION_TYPES.TOGGLE_NAV,
   };
 };
 

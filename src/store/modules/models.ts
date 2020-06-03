@@ -1,7 +1,7 @@
 import { OfferModel } from "../../models/models";
 
 export enum ACTION_TYPES {
-  TOGGLE_MENU = "TOGGLE_MENU",
+  TOGGLE_NAV = "TOGGLE_NAV",
   FETCH_OFFERS = "FETCH_OFFERS",
   SET_OFFERS = "SET_OFFERS",
   ADD_OFFER = "ADD_OFFER",
