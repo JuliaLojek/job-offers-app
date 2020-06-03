@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "./Page.module.css";
 
 const AllOffersPage: React.FC = () => {
   return (
-    <main>
+    <main className={styles.main}>
       all offers
     </main>
   )
