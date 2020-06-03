@@ -16,7 +16,6 @@ export const selectFilteredOffers = (
   return state.offersList.filter((offer: OfferModel) => {
     return (
       offer.city.toLowerCase().includes(searchPhrase.toLowerCase()) ||
-      offer.lang.join("").toLowerCase().includes(searchPhrase.toLowerCase()) ||
       offer.req.join("").toLowerCase().includes(searchPhrase.toLowerCase()) ||
       offer.notes.toLowerCase().includes(searchPhrase.toLowerCase())
     );
