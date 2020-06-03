@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { ACTION_TOGGLE_NAV } from "../../store/modules/actions";
 import Nav from "../Nav/Nav";
 import styles from "./Header.module.css";
+import hamburgerIcon from "../../img/icons8-menu-100.png";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
@@ -16,10 +17,12 @@ const Header: React.FC = () => {
     <header className={styles.header}>
       <Nav />
       <div className={styles.hamburger} onClick={handleLinkClick}>
-        &#9776;
+        <img src={hamburgerIcon} alt="menu icon" className={styles.menuIcon} />
       </div>
     </header>
   );
 };
 
 export default Header;
+
+// hamburger symbol: &#9776;

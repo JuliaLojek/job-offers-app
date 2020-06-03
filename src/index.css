@@ -1,3 +1,19 @@
+:root {
+  --main-color: #9ecc9e;
+  --secondary-color: #527752;
+}
+
+/* * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+} */
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "sans-serif";

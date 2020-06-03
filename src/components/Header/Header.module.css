@@ -6,13 +6,17 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: #ff85ae;
+  background: var(--main-color);
 }
 
 .hamburger {
   cursor: pointer;
-  padding: 16px;
+  padding: 10px;
   user-select: none;
+}
+
+.menuIcon {
+  height: 36px;
 }
 
 @media (min-width: 600px) {
