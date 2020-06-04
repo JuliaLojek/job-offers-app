@@ -1,0 +1,30 @@
+.card {
+  background: #fff;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.topPart {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.company {
+  font-size: 18px;
+}
+
+.date {
+  font-size: 13px;
+}
+
+.city {
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-size: 15px;
+  margin-top: 4px;
+}
