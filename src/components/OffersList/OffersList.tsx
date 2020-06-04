@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { ACTION_FETCH_OFFERS } from "../../store/modules/actions";
 import { StateModel } from "../../store/modules/models";
 import { selectAllOffers } from "../../store/modules/selectors";
+import styles from "./OffersList.module.css";
+import OfferCard from "../OfferCard/OfferCard";
 
 const OffersList: React.FC = () => {
   const dispatch = useDispatch();
@@ -11,18 +13,33 @@ const OffersList: React.FC = () => {
 
   useEffect(() => {
     fetchOffersList();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <ul>
-    {offers.map(offer => {
-      return <li key={offer.id}>
-        <h4>{offer.city}</h4>
-    <p>{offer.req.join(", ")}</p>
-    <p>{offer.notes}</p>
-      </li>
-    })}
-  </ul>
+  return (
+    <section className={styles.mainBox}>
+      <h3>All your offers:</h3>
+      <div className={styles.listBox}>
+        {offers.length === 0
+        ?
+        <h4>You don't have any offers saved yet. Add some!</h4>
+        :
+        offers.map((offer) => {
+          const { id, company, city, req, notes } = offer;
+          return (
+            <OfferCard
+              key={id}
+              id={id}
+              company={company}
+              city={city}
+              req={req}
+              notes={notes}
+            />
+          );
+        })}
+      </div>
+    </section>
+  );
 };
 
 export default OffersList;

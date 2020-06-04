@@ -1,0 +1,12 @@
+.mainBox {
+  background: var(--main-color);
+  margin: 0 auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.listBox {
+  margin-top: 20px;
+}

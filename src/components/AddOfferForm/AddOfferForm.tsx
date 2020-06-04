@@ -116,6 +116,7 @@ const AddOfferForm: React.FC = () => {
           value={reqsInput}
           className={styles.input + " " + styles.textarea}
           placeholder="enter requirements separeted by spaces"
+          maxLength={240}
           onChange={handleRequirementsChange}
         />
         <p className={styles.errorBox}>{reqsError}</p>
@@ -126,6 +127,7 @@ const AddOfferForm: React.FC = () => {
           value={notesInput}
           className={styles.input + " " + styles.textarea}
           placeholder="additional notes, links, etc."
+          maxLength={240}
           onChange={(event) => setNotesInput(event.target.value)}
         />
         <p className={styles.errorBox}></p>
