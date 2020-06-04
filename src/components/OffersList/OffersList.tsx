@@ -11,6 +11,7 @@ const OffersList: React.FC = () => {
 
   useEffect(() => {
     fetchOffersList();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <ul>

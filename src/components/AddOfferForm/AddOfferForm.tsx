@@ -6,16 +6,19 @@ import { ACTION_ADD_OFFER } from "../../store/modules/actions";
 import { OfferModel } from "../../models/models";
 
 const AddOfferForm: React.FC = () => {
+  const [companyInput, setCompanyInput] = useState("");
   const [cityInput, setCityInput] = useState("");
   const [reqsInput, setReqsInput] = useState("");
   const [notesInput, setNotesInput] = useState("");
+  const [companyError, setCompanyError] = useState("");
   const [cityError, setCityError] = useState("");
   const [reqsError, setReqsError] = useState("");
+  
   const dispatch = useDispatch();
   const addNewOffer = (newOffer: OfferModel) =>
     dispatch(ACTION_ADD_OFFER(newOffer));
 
-  const errorMsg = "Fill out this input. Don't use any special characters.";
+  const errorMsg = "Fill out this field. Don't use any special characters.";
 
   const validateInput = (input: string) => {
     let isValid = true;
@@ -29,10 +32,20 @@ const AddOfferForm: React.FC = () => {
   };
 
   const clearInputs = () => {
+    setCompanyInput("");
     setCityInput("");
     setReqsInput("");
     setNotesInput("");
-  }
+  };
+
+  const handleCompanyChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setCompanyInput(event.currentTarget.value);
+    if (!validateInput(event.currentTarget.value)) {
+      setCompanyError(errorMsg);
+    } else {
+      setCompanyError("");
+    }
+  };
 
   const handleCityChange = (event: React.FormEvent<HTMLInputElement>) => {
     setCityInput(event.currentTarget.value);
@@ -56,9 +69,14 @@ const AddOfferForm: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (validateInput(cityInput) && validateInput(reqsInput)) {
+    if (
+      validateInput(companyInput) &&
+      validateInput(cityInput) &&
+      validateInput(reqsInput)
+    ) {
       const newOffer: OfferModel = {
         id: Date.now(),
+        company: companyInput.trim(),
         city: cityInput.trim(),
         req: reqsInput.trim().split(" "),
         notes: notesInput,
@@ -72,41 +90,47 @@ const AddOfferForm: React.FC = () => {
     <div className={styles.mainBox}>
       <h3>Add new offer:</h3>
       <form className={styles.formBox} onSubmit={handleSubmit}>
-        <div className={styles.inputsBox}>
-          <label htmlFor="cityName">City name:</label>
-          <input
-            type="text"
-            id="cityName"
-            value={cityInput}
-            className={styles.input}
-            placeholder="e.g. Barcelona"
-            onChange={handleCityChange}
-          />
-          <p className={styles.errorBox}>{cityError}</p>
+        <label htmlFor="companyName">Company name:</label>
+        <input
+          type="text"
+          id="companyName"
+          value={companyInput}
+          className={styles.input}
+          onChange={handleCompanyChange}
+        />
+        <p className={styles.errorBox}>{companyError}</p>
 
-          <label htmlFor="req">Job requirements:</label>
-          <textarea
-            id="req"
-            value={reqsInput}
-            className={styles.input + " " + styles.textarea}
-            placeholder="enter requirements separeted by spaces"
-            onChange={handleRequirementsChange}
-          />
-          <p className={styles.errorBox}>{reqsError}</p>
-        </div>
-        <div className={styles.inputsBox}>
-          <label htmlFor="notes">Notes:</label>
-          <textarea
-            id="notes"
-            value={notesInput}
-            className={styles.input + " " + styles.textarea}
-            placeholder="additional notes, links, etc."
-            onChange={(event) => setNotesInput(event.target.value)}
-          />
-          <p className={styles.errorBox}></p>
+        <label htmlFor="cityName">City name:</label>
+        <input
+          type="text"
+          id="cityName"
+          value={cityInput}
+          className={styles.input}
+          onChange={handleCityChange}
+        />
+        <p className={styles.errorBox}>{cityError}</p>
 
-          <Button text="Add offer" type="submit" />
-        </div>
+        <label htmlFor="req">Job requirements:</label>
+        <textarea
+          id="req"
+          value={reqsInput}
+          className={styles.input + " " + styles.textarea}
+          placeholder="enter requirements separeted by spaces"
+          onChange={handleRequirementsChange}
+        />
+        <p className={styles.errorBox}>{reqsError}</p>
+
+        <label htmlFor="notes">Notes:</label>
+        <textarea
+          id="notes"
+          value={notesInput}
+          className={styles.input + " " + styles.textarea}
+          placeholder="additional notes, links, etc."
+          onChange={(event) => setNotesInput(event.target.value)}
+        />
+        <p className={styles.errorBox}></p>
+
+        <Button text="Add offer" type="submit" />
       </form>
     </div>
   );

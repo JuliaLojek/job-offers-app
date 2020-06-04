@@ -12,11 +12,6 @@
   flex-direction: column;
 }
 
-.inputsBox {
-  display: flex;
-  flex-direction: column;
-}
-
 .input {
   width: 100%;
   margin: 4px 0;
