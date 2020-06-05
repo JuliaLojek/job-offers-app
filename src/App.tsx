@@ -4,6 +4,7 @@ import AllOffers from "./routes/AllOffersPage";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import RequirementsPage from "./routes/RequirementsPage";
 import CitiesPage from "./routes/CitiesPage";
+import AddOfferPage from "./routes/AddOfferPage";
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path="/" component={AllOffers}></Route>
-          <Route exact path="/requirements" component={RequirementsPage}></Route>
-          <Route exact path="/cities" component={CitiesPage}></Route>
+          <Route exact path="/" component={AllOffers} />
+          <Route path="/addoffer" component={AddOfferPage} />
+          <Route exact path="/requirements" component={RequirementsPage} />
+          <Route exact path="/cities" component={CitiesPage} />
         </Switch>
       </BrowserRouter>
     </div>
