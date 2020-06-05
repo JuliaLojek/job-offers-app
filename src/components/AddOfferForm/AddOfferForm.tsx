@@ -13,7 +13,7 @@ const AddOfferForm: React.FC = () => {
   const [companyError, setCompanyError] = useState("");
   const [cityError, setCityError] = useState("");
   const [reqsError, setReqsError] = useState("");
-  
+
   const dispatch = useDispatch();
   const addNewOffer = (newOffer: OfferModel) =>
     dispatch(ACTION_ADD_OFFER(newOffer));
@@ -90,7 +90,9 @@ const AddOfferForm: React.FC = () => {
     <div className={styles.mainBox}>
       <h3>Add new offer:</h3>
       <form className={styles.formBox} onSubmit={handleSubmit}>
-        <label htmlFor="companyName">Company name:</label>
+        <label className={styles.label} htmlFor="companyName">
+          Company name:
+        </label>
         <input
           type="text"
           id="companyName"
@@ -100,7 +102,9 @@ const AddOfferForm: React.FC = () => {
         />
         <p className={styles.errorBox}>{companyError}</p>
 
-        <label htmlFor="cityName">City name:</label>
+        <label className={styles.label} htmlFor="cityName">
+          City name:
+        </label>
         <input
           type="text"
           id="cityName"
@@ -110,7 +114,9 @@ const AddOfferForm: React.FC = () => {
         />
         <p className={styles.errorBox}>{cityError}</p>
 
-        <label htmlFor="req">Job requirements:</label>
+        <label className={styles.label} htmlFor="req">
+          Job requirements:
+        </label>
         <textarea
           id="req"
           value={reqsInput}
@@ -121,7 +127,9 @@ const AddOfferForm: React.FC = () => {
         />
         <p className={styles.errorBox}>{reqsError}</p>
 
-        <label htmlFor="notes">Notes:</label>
+        <label className={styles.label} htmlFor="notes">
+          Notes:
+        </label>
         <textarea
           id="notes"
           value={notesInput}
