@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AddOfferForm.module.css";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
@@ -43,7 +43,9 @@ const AddOfferForm: React.FC = () => {
   };
 
   const handleInputChange = (
-    event: React.FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>,
+    event:
+      | React.FormEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>,
     inputCallback: (value: React.SetStateAction<string>) => void,
     errorCallback: (value: React.SetStateAction<string>) => void
   ) => {
@@ -53,7 +55,6 @@ const AddOfferForm: React.FC = () => {
     } else {
       errorCallback("");
     }
-    handleBtnChange();
   };
 
   const handleBtnChange = () => {
@@ -90,6 +91,12 @@ const AddOfferForm: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    handleBtnChange();
+    console.log("rerendered")
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [companyInput, cityInput, reqsInput, companyError, cityError, reqsError]);
+
   return (
     <div className={styles.mainBox}>
       <h3 className={styles.title}>Add new offer:</h3>
@@ -102,7 +109,9 @@ const AddOfferForm: React.FC = () => {
           id="companyName"
           value={companyInput}
           className={styles.input}
-          onChange={(event) => handleInputChange(event, setCompanyInput, setCompanyError)}
+          onChange={(event) =>
+            handleInputChange(event, setCompanyInput, setCompanyError)
+          }
         />
         <p className={styles.errorBox}>{companyError}</p>
 
@@ -114,7 +123,9 @@ const AddOfferForm: React.FC = () => {
           id="cityName"
           value={cityInput}
           className={styles.input}
-          onChange={(event) => handleInputChange(event, setCityInput, setCityError)}
+          onChange={(event) =>
+            handleInputChange(event, setCityInput, setCityError)
+          }
         />
         <p className={styles.errorBox}>{cityError}</p>
 
@@ -127,7 +138,9 @@ const AddOfferForm: React.FC = () => {
           className={styles.input + " " + styles.textarea}
           placeholder="enter requirements separeted by spaces"
           maxLength={240}
-          onChange={(event) => handleInputChange(event, setReqsInput, setReqsError)}
+          onChange={(event) =>
+            handleInputChange(event, setReqsInput, setReqsError)
+          }
         />
         <p className={styles.errorBox}>{reqsError}</p>
 
