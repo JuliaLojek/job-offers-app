@@ -18,20 +18,20 @@ const Nav: React.FC = () => {
   return (
     <nav className={isNavOpen ? styles.nav + " " + styles.navOpen : styles.nav}>
       <Link to="/" className={styles.link} onClick={handleLinkClick}>
-        ALL OFFERS
+        All offers
       </Link>
       <Link to="/addoffer" className={styles.link} onClick={handleLinkClick}>
-        ADD NEW OFFER
+        Add new offer
       </Link>
       <Link
         to="/requirements"
         className={styles.link}
         onClick={handleLinkClick}
       >
-        TOP REQUIREMENTS
+        Top requirements
       </Link>
       <Link to="/cities" className={styles.link} onClick={handleLinkClick}>
-        TOP CITIES
+        Top cities
       </Link>
     </nav>
   );

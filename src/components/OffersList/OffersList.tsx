@@ -22,7 +22,7 @@ const OffersList: React.FC = () => {
       <div className={styles.listBox}>
         {offers.length === 0
         ?
-        <h4>You don't have any offers saved yet. Add some!</h4>
+        <div className={styles.infoBox}><p>You don't have any offers saved yet. Add some!</p></div>
         :
         offers.map((offer) => {
           const { id, company, city, req, notes } = offer;

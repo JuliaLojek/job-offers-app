@@ -1,17 +1,15 @@
-.mainBox {
-  margin: 0 auto;
-  padding: 20px;
-  width: 100%;
-  max-width: 800px;
-  border-radius: var(--corners);
-  border: var(--borders);
-}
-
 .title {
   text-align: center;
+  padding-top: 20px;
 }
 
 .formBox {
+  margin: 0 auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px;
+  border-radius: var(--corners);
+  border: var(--borders);
   margin-top: 20px;
   display: flex;
   flex-direction: column;
