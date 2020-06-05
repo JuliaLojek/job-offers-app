@@ -10,6 +10,9 @@ const AddOfferForm: React.FC = () => {
   const [cityInput, setCityInput] = useState("");
   const [reqsInput, setReqsInput] = useState("");
   const [notesInput, setNotesInput] = useState("");
+
+  const [isBtnActive, setIsBtnActive] = useState(false);
+
   const [companyError, setCompanyError] = useState("");
   const [cityError, setCityError] = useState("");
   const [reqsError, setReqsError] = useState("");
@@ -36,34 +39,35 @@ const AddOfferForm: React.FC = () => {
     setCityInput("");
     setReqsInput("");
     setNotesInput("");
+    setIsBtnActive(false);
   };
 
-  const handleCompanyChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setCompanyInput(event.currentTarget.value);
-    if (!validateInput(event.currentTarget.value)) {
-      setCompanyError(errorMsg);
-    } else {
-      setCompanyError("");
-    }
-  };
-
-  const handleCityChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setCityInput(event.currentTarget.value);
-    if (!validateInput(event.currentTarget.value)) {
-      setCityError(errorMsg);
-    } else {
-      setCityError("");
-    }
-  };
-
-  const handleRequirementsChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
+  const handleInputChange = (
+    event: React.FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>,
+    inputCallback: (value: React.SetStateAction<string>) => void,
+    errorCallback: (value: React.SetStateAction<string>) => void
   ) => {
-    setReqsInput(event.currentTarget.value);
+    inputCallback(event.currentTarget.value);
     if (!validateInput(event.currentTarget.value)) {
-      setReqsError(errorMsg);
+      errorCallback(errorMsg);
     } else {
-      setReqsError("");
+      errorCallback("");
+    }
+    handleBtnChange();
+  };
+
+  const handleBtnChange = () => {
+    if (
+      companyInput &&
+      cityInput &&
+      reqsInput &&
+      !companyError &&
+      !cityError &&
+      !reqsError
+    ) {
+      setIsBtnActive(true);
+    } else {
+      setIsBtnActive(false);
     }
   };
 
@@ -88,7 +92,7 @@ const AddOfferForm: React.FC = () => {
 
   return (
     <div className={styles.mainBox}>
-      <h3>Add new offer:</h3>
+      <h3 className={styles.title}>Add new offer:</h3>
       <form className={styles.formBox} onSubmit={handleSubmit}>
         <label className={styles.label} htmlFor="companyName">
           Company name:
@@ -98,7 +102,7 @@ const AddOfferForm: React.FC = () => {
           id="companyName"
           value={companyInput}
           className={styles.input}
-          onChange={handleCompanyChange}
+          onChange={(event) => handleInputChange(event, setCompanyInput, setCompanyError)}
         />
         <p className={styles.errorBox}>{companyError}</p>
 
@@ -110,7 +114,7 @@ const AddOfferForm: React.FC = () => {
           id="cityName"
           value={cityInput}
           className={styles.input}
-          onChange={handleCityChange}
+          onChange={(event) => handleInputChange(event, setCityInput, setCityError)}
         />
         <p className={styles.errorBox}>{cityError}</p>
 
@@ -123,7 +127,7 @@ const AddOfferForm: React.FC = () => {
           className={styles.input + " " + styles.textarea}
           placeholder="enter requirements separeted by spaces"
           maxLength={240}
-          onChange={handleRequirementsChange}
+          onChange={(event) => handleInputChange(event, setReqsInput, setReqsError)}
         />
         <p className={styles.errorBox}>{reqsError}</p>
 
@@ -140,7 +144,7 @@ const AddOfferForm: React.FC = () => {
         />
         <p className={styles.errorBox}></p>
 
-        <Button text="Add offer" type="submit" />
+        <Button text="Add offer" type="submit" isActive={isBtnActive} />
       </form>
     </div>
   );

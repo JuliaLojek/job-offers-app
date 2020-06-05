@@ -2,13 +2,15 @@
   background: #fff;
   padding: 16px;
   border: none;
-  border-bottom: 5px solid var(--secondary-color);
-  box-shadow: var(--shadow);
+  border: var(--borders);
+  border-radius: var(--corners);
+  margin: 8px;
 }
 
 .topPart {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap-reverse;
   margin-bottom: 2px;
 }
 

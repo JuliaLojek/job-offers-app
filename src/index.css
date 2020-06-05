@@ -1,9 +1,11 @@
 :root {
-  --main-color: #9ecc9e;
-  --secondary-color: #527752;
-  --third-color: #147464;
+  --main-color: #c8c8c8;
+  --secondary-color: #41203b;
+  --third-color: #fff;
   --error-color: #ac172f;
-  --shadow: 0 0 10px var(--secondary-color), 0 0 2px #000;
+  --corners: 16px;
+  --borders: 2px solid var(--main-color);
+  --borders2: 2px solid var(--secondary-color);
 }
 
 * {
@@ -22,6 +24,7 @@ body {
   font-family: "sans-serif";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {

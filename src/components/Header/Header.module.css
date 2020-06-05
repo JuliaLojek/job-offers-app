@@ -5,10 +5,12 @@
   align-items: center;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: calc(100% - 16px);
   height: 60px;
   padding: 0 16px;
   background: var(--main-color);
+  border-radius: var(--corners);
+  margin: 8px;
 }
 
 .title {
@@ -18,10 +20,7 @@
 .hamburger {
   cursor: pointer;
   user-select: none;
-}
-
-.menuIcon {
-  height: 36px;
+  font-size: 30px;
 }
 
 @media (min-width: 800px) {

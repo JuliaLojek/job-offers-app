@@ -1,9 +1,9 @@
 .main {
-  margin: 76px 16px 16px 16px;
+  margin: 76px 8px 8px 8px;
 }
 
 @media (min-width: 800px) {
   .main {
-    margin: 76px 16px 16px 226px;
+    margin: 76px 8px 8px 224px;
   }
 }

@@ -1,9 +1,14 @@
 .mainBox {
-  background: var(--main-color);
   margin: 0 auto;
   padding: 20px;
-  width: 90%;
+  width: 100%;
   max-width: 800px;
+  border-radius: var(--corners);
+  border: var(--borders);
+}
+
+.title {
+  text-align: center;
 }
 
 .formBox {
@@ -12,17 +17,17 @@
   flex-direction: column;
 }
 
-.label {
+/* .label {
   padding-left: 16px;
   padding-bottom: 4px;
-}
+} */
 
 .input {
   width: 100%;
   margin: 4px 0;
-  padding: 16px;
+  padding: 4px 0;
   border: none;
-  border-bottom: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--main-color);
   font-size: 16px;
   font-family: inherit;
 }
@@ -37,7 +42,7 @@
 
 .errorBox {
   margin-bottom: 16px;
-  padding-left: 16px;
+  /* padding-left: 16px; */
   color: var(--error-color);
   font-size: 0.9em;
 }

@@ -1,10 +1,14 @@
 .mainBox {
-  background: var(--main-color);
-  margin: 0 auto;
+  /* background: var(--main-color); */
+  margin: 8px auto;
   padding: 20px;
   width: 90%;
   max-width: 800px;
   margin-top: 20px;
+}
+
+.title {
+  text-align: center;
 }
 
 .listBox {

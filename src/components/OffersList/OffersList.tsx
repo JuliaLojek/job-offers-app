@@ -18,7 +18,7 @@ const OffersList: React.FC = () => {
 
   return (
     <section className={styles.mainBox}>
-      <h3>All your offers:</h3>
+      <h3 className={styles.title}>All offers:</h3>
       <div className={styles.listBox}>
         {offers.length === 0
         ?
