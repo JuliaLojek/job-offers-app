@@ -1,3 +1,9 @@
 .main {
   margin: 76px 16px 16px 16px;
 }
+
+@media (min-width: 800px) {
+  .main {
+    margin: 76px 16px 16px 226px;
+  }
+}

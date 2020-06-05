@@ -2,6 +2,10 @@
   display: none;
   flex-direction: column;
   align-items: flex-end;
+  background: var(--third-color);
+  position: fixed;
+  width: 100%;
+  top: 60px;
 }
 
 .navOpen {
@@ -14,9 +18,11 @@
   padding: 16px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .nav {
     display: flex;
-    flex-direction: row;
+    align-items: flex-start;
+    width: 210px;
+    height: 100vh;
   }
 }

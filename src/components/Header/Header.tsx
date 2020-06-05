@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { ACTION_TOGGLE_NAV } from "../../store/modules/actions";
-import Nav from "../Nav/Nav";
 import styles from "./Header.module.css";
 import hamburgerIcon from "../../img/icons8-menu-100.png";
 
@@ -15,7 +14,7 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <Nav />
+      <h2 className={styles.title}>My Job Offers</h2>
       <div className={styles.hamburger} onClick={handleLinkClick}>
         <img src={hamburgerIcon} alt="menu icon" className={styles.menuIcon} />
       </div>
