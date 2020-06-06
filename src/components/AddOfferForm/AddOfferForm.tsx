@@ -23,13 +23,13 @@ const AddOfferForm: React.FC = () => {
 
   const errorMsg = "Fill out this field. Don't use any special characters.";
 
-  const validateInput = (input: string) => {
+  const validateInput = (input: string, isCommaAccepted?: boolean) => {
     let isValid = true;
-    if (input.trim().length === 0) {
-      isValid = false;
-    }
-    if (input.match(/[^a-zA-Z0-9 ]/g)) {
-      isValid = false;
+    isValid = isValid && input.trim().length > 0;
+    if (isCommaAccepted) {
+      isValid = isValid && !input.match(/[^a-zA-Z0-9, ]/g);
+    } else {
+      isValid = isValid && !input.match(/[^a-zA-Z0-9 ]/g);
     }
     return isValid;
   };
@@ -43,9 +43,7 @@ const AddOfferForm: React.FC = () => {
   };
 
   const handleInputChange = (
-    event:
-      | React.FormEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>,
+    event: React.FormEvent<HTMLInputElement>,
     inputCallback: (value: React.SetStateAction<string>) => void,
     errorCallback: (value: React.SetStateAction<string>) => void
   ) => {
@@ -54,6 +52,17 @@ const AddOfferForm: React.FC = () => {
       errorCallback(errorMsg);
     } else {
       errorCallback("");
+    }
+  };
+
+  const handleReqsInputChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setReqsInput(event.currentTarget.value);
+    if (!validateInput(event.currentTarget.value, true)) {
+      setReqsError("Fill out this field. Use commas to separate requirements.");
+    } else {
+      setReqsError("");
     }
   };
 
@@ -77,14 +86,14 @@ const AddOfferForm: React.FC = () => {
     if (
       validateInput(companyInput) &&
       validateInput(cityInput) &&
-      validateInput(reqsInput)
+      validateInput(reqsInput, true)
     ) {
       const newOffer: OfferModel = {
         id: Date.now(),
         company: companyInput.trim(),
         city: cityInput.trim(),
-        req: reqsInput.trim().split(" "),
-        notes: notesInput,
+        req: reqsInput.split(",").map(req => req.trim()),
+        notes: notesInput.trim(),
       };
       addNewOffer(newOffer);
       clearInputs();
@@ -93,8 +102,8 @@ const AddOfferForm: React.FC = () => {
 
   useEffect(() => {
     handleBtnChange();
-    console.log("rerendered")
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.log("rerendered");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [companyInput, cityInput, reqsInput, companyError, cityError, reqsError]);
 
   return (
@@ -136,11 +145,9 @@ const AddOfferForm: React.FC = () => {
           id="req"
           value={reqsInput}
           className={styles.input + " " + styles.textarea}
-          placeholder="enter requirements separeted by spaces"
+          placeholder="enter requirements separeted by commas"
           maxLength={240}
-          onChange={(event) =>
-            handleInputChange(event, setReqsInput, setReqsError)
-          }
+          onChange={(event) => handleReqsInputChange(event)}
         />
         <p className={styles.errorBox}>{reqsError}</p>
 
