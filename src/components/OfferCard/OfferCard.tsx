@@ -7,13 +7,13 @@ const OfferCard: React.FC<OfferModel> = (props) => {
   return (
     <div className={styles.card}>
       <div className={styles.topPart}>
-        <h4 className={styles.company}>{props.company}</h4>
+        <h4 className={styles.company}>{props.company.toUpperCase()}</h4>
         <p className={styles.date}>added: {moment(props.id).format("DD.MM.YYYY")}</p>
       </div>
-      <h5 className={styles.city}>{props.city}</h5>
+      <h5 className={styles.city}>{props.city.toUpperCase()}</h5>
       <p className={styles.text}>
         <b>Requirements: </b>
-        {props.req.join(", ")}
+        {props.req.join(", ").toLowerCase()}
       </p>
       <p className={styles.text}>
         <b>Notes: </b>
