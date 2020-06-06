@@ -15,11 +15,6 @@
   flex-direction: column;
 }
 
-/* .label {
-  padding-left: 16px;
-  padding-bottom: 4px;
-} */
-
 .input {
   width: 100%;
   margin: 4px 0;
@@ -32,6 +27,7 @@
 
 .input:focus {
   outline: none;
+  border-bottom: 2px solid var(--secondary-color);
 }
 
 .textarea {
@@ -40,7 +36,6 @@
 
 .errorBox {
   margin-bottom: 16px;
-  /* padding-left: 16px; */
   color: var(--error-color);
   font-size: 0.9em;
 }
