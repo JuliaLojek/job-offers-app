@@ -1,5 +1,6 @@
 :root {
   --main-color: #c8c8c8;
+  --main-color-op: rgba(200, 200, 200, 0.5);
   --secondary-color: #41203b;
   --third-color: #fff;
   --error-color: #ac172f;
