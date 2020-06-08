@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./OfferCard.module.css";
 import { OfferModel } from "../../models/models";
-import editBtn from "../../img/icons8-edit.svg";
-import removeBtn from "../../img/icons8-remove.svg";
+import editBtn from "../../img/icons8-edit-g.png";
+import removeBtn from "../../img/icons8-remove-g.png";
 import moment from "moment";
 
 const OfferCard: React.FC<OfferModel> = (props) => {
