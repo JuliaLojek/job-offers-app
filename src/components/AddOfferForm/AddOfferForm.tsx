@@ -145,7 +145,7 @@ const AddOfferForm: React.FC = () => {
           id="req"
           value={reqsInput}
           className={styles.input + " " + styles.textarea}
-          placeholder="enter requirements separeted by commas"
+          placeholder="enter requirements separated by commas"
           maxLength={240}
           onChange={(event) => handleReqsInputChange(event)}
         />
