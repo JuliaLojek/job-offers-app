@@ -64,11 +64,7 @@ export const ACTION_EDIT_OFFER = (
   return fetchOffersListFromLS()
     .then((prevList) => {
       return prevList.map((prevOffer: OfferModel) => {
-        if (prevOffer.id === offer.id) {
-          return offer;
-        } else {
-          return prevOffer;
-        }
+        return prevOffer.id === offer.id ? offer : prevOffer;
       });
     })
     .then((newList) => {
