@@ -43,7 +43,9 @@ export const ACTION_SET_OFFERS = (offersList: OfferModel[]) => {
 
 export const ACTION_ADD_OFFER = (
   offer: OfferModel
-): ThunkAction<Promise<any>, StateModel, unknown, Action> => async (dispatch) => {
+): ThunkAction<Promise<any>, StateModel, unknown, Action> => async (
+  dispatch
+) => {
   return fetchOffersListFromLS()
     .then((prevList) => {
       return [...prevList, offer];
@@ -54,12 +56,37 @@ export const ACTION_ADD_OFFER = (
     .then(() => dispatch(ACTION_FETCH_OFFERS()));
 };
 
+export const ACTION_EDIT_OFFER = (
+  offer: OfferModel
+): ThunkAction<Promise<any>, StateModel, unknown, Action> => async (
+  dispatch
+) => {
+  return fetchOffersListFromLS()
+    .then((prevList) => {
+      return prevList.map((prevOffer: OfferModel) => {
+        if (prevOffer.id === offer.id) {
+          return offer;
+        } else {
+          return prevOffer;
+        }
+      });
+    })
+    .then((newList) => {
+      localStorage.setItem("myJobOffers", JSON.stringify(newList));
+    })
+    .then(() => dispatch(ACTION_FETCH_OFFERS()));
+};
+
 export const ACTION_DELETE_OFFER = (
   offerId: number
-): ThunkAction<Promise<any>, StateModel, unknown, Action> => async (dispatch) => {
+): ThunkAction<Promise<any>, StateModel, unknown, Action> => async (
+  dispatch
+) => {
   fetchOffersListFromLS()
     .then((prevList) => {
-      const newList = prevList.filter((offer: OfferModel) => offer.id !== offerId);
+      const newList = prevList.filter(
+        (offer: OfferModel) => offer.id !== offerId
+      );
       return newList;
     })
     .then((newList) => {
