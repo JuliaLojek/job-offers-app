@@ -8,23 +8,24 @@ import RemoveModal from "../RemoveModal/RemoveModal";
 
 const OfferCard: React.FC<OfferModel> = (props) => {
   const [isRemoveModalActive, setIsRemoveModalActive] = useState(false);
+  const {id, company, city, req, notes} = props;
 
   return (
     <React.Fragment>
       <div className={styles.card}>
-        <h4 className={styles.company}>{props.company.toUpperCase()}</h4>
-        <h5 className={styles.city}>{props.city.toUpperCase()}</h5>
+        <h4 className={styles.company}>{company.toUpperCase()}</h4>
+        <h5 className={styles.city}>{city.toUpperCase()}</h5>
         <p className={styles.text}>
           <b>Requirements: </b>
-          {props.req.join(", ").toLowerCase()}
+          {req.join(", ").toLowerCase()}
         </p>
         <p className={styles.text}>
           <b>Notes: </b>
-          {props.notes}
+          {notes}
         </p>
         <div className={styles.editPart}>
           <p className={styles.date}>
-            added: {moment(props.id).format("DD.MM.YYYY")}
+            added: {moment(id).format("DD.MM.YYYY")}
           </p>
           <div>
             <div className={styles.imgWrap}>
@@ -43,7 +44,7 @@ const OfferCard: React.FC<OfferModel> = (props) => {
       </div>
 
       {isRemoveModalActive && (
-        <RemoveModal id={props.id} handleCloseModal={setIsRemoveModalActive} />
+        <RemoveModal id={id} handleCloseModal={setIsRemoveModalActive} />
       )}
     </React.Fragment>
   );

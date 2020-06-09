@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./Page.module.css";
-import AddOfferForm from "../components/AddOfferForm/AddOfferForm";
+import Form from "../components/Form/Form";
 
 const AddOfferPage: React.FC = () => {
   return (
     <main className={styles.main}>
-      <AddOfferForm />
+      <h3 className={styles.title}>Add new offer:</h3>
+      <Form />
     </main>
-  )
-}
+  );
+};
 
 export default AddOfferPage;

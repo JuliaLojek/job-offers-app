@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import styles from "./AddOfferForm.module.css";
+import styles from "./Form.module.css";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
 import { ACTION_ADD_OFFER } from "../../store/modules/actions";
 import { OfferModel } from "../../models/models";
 
-const AddOfferForm: React.FC = () => {
+const Form: React.FC = () => {
   const [companyInput, setCompanyInput] = useState("");
   const [cityInput, setCityInput] = useState("");
   const [reqsInput, setReqsInput] = useState("");
@@ -92,7 +92,7 @@ const AddOfferForm: React.FC = () => {
         id: Date.now(),
         company: companyInput.trim(),
         city: cityInput.trim(),
-        req: reqsInput.split(",").map(req => req.trim()),
+        req: reqsInput.split(",").map((req) => req.trim()),
         notes: notesInput.trim(),
       };
       addNewOffer(newOffer);
@@ -107,67 +107,64 @@ const AddOfferForm: React.FC = () => {
   }, [companyInput, cityInput, reqsInput, companyError, cityError, reqsError]);
 
   return (
-    <div className={styles.mainBox}>
-      <h3 className={styles.title}>Add new offer:</h3>
-      <form className={styles.formBox} onSubmit={handleSubmit}>
-        <label className={styles.label} htmlFor="companyName">
-          Company name:
-        </label>
-        <input
-          type="text"
-          id="companyName"
-          value={companyInput}
-          className={styles.input}
-          onChange={(event) =>
-            handleInputChange(event, setCompanyInput, setCompanyError)
-          }
-        />
-        <p className={styles.errorBox}>{companyError}</p>
+    <form className={styles.formBox} onSubmit={handleSubmit}>
+      <label className={styles.label} htmlFor="companyName">
+        Company name:
+      </label>
+      <input
+        type="text"
+        id="companyName"
+        value={companyInput}
+        className={styles.input}
+        onChange={(event) =>
+          handleInputChange(event, setCompanyInput, setCompanyError)
+        }
+      />
+      <p className={styles.errorBox}>{companyError}</p>
 
-        <label className={styles.label} htmlFor="cityName">
-          City name:
-        </label>
-        <input
-          type="text"
-          id="cityName"
-          value={cityInput}
-          className={styles.input}
-          onChange={(event) =>
-            handleInputChange(event, setCityInput, setCityError)
-          }
-        />
-        <p className={styles.errorBox}>{cityError}</p>
+      <label className={styles.label} htmlFor="cityName">
+        City name:
+      </label>
+      <input
+        type="text"
+        id="cityName"
+        value={cityInput}
+        className={styles.input}
+        onChange={(event) =>
+          handleInputChange(event, setCityInput, setCityError)
+        }
+      />
+      <p className={styles.errorBox}>{cityError}</p>
 
-        <label className={styles.label} htmlFor="req">
-          Job requirements:
-        </label>
-        <textarea
-          id="req"
-          value={reqsInput}
-          className={styles.input + " " + styles.textarea}
-          placeholder="enter requirements separated by commas"
-          maxLength={240}
-          onChange={(event) => handleReqsInputChange(event)}
-        />
-        <p className={styles.errorBox}>{reqsError}</p>
+      <label className={styles.label} htmlFor="req">
+        Job requirements:
+      </label>
+      <textarea
+        id="req"
+        value={reqsInput}
+        className={styles.input + " " + styles.textarea}
+        placeholder="enter requirements separated by commas"
+        maxLength={240}
+        onChange={(event) => handleReqsInputChange(event)}
+      />
+      <p className={styles.errorBox}>{reqsError}</p>
 
-        <label className={styles.label} htmlFor="notes">
-          Notes:
-        </label>
-        <textarea
-          id="notes"
-          value={notesInput}
-          className={styles.input + " " + styles.textarea}
-          placeholder="additional notes, links, etc."
-          maxLength={240}
-          onChange={(event) => setNotesInput(event.target.value)}
-        />
-        <p className={styles.errorBox}></p>
+      <label className={styles.label} htmlFor="notes">
+        Notes:
+      </label>
+      <textarea
+        id="notes"
+        value={notesInput}
+        className={styles.input + " " + styles.textarea}
+        placeholder="additional notes, links, etc."
+        maxLength={240}
+        onChange={(event) => setNotesInput(event.target.value)}
+      />
+      <p className={styles.errorBox}></p>
 
-        <Button text="Add offer" type="submit" isActive={isBtnActive} />
-      </form>
-    </div>
+      <Button text="Add offer" type="submit" isActive={isBtnActive} />
+    </form>
   );
 };
 
-export default AddOfferForm;
+export default Form;
