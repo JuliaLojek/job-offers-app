@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Form.module.css";
-import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
 import { ACTION_ADD_OFFER } from "../../store/modules/actions";
 import { OfferModel } from "../../models/models";
@@ -136,7 +135,23 @@ const Form: React.FC = () => {
       />
       <p className={styles.errorBox}></p>
 
-      <Button text="Add offer" type="submit" isActive={isBtnActive} />
+      <button
+        className={[
+          styles.btn,
+          isBtnActive ? styles.mainBtn : styles.inactiveBtn,
+        ].join(" ")}
+        type="submit"
+      >
+        Add offer
+      </button>
+      {/* {props.secondaryBtn && (
+        <button
+          className={styles.btn}
+          onClick={() => props.handleCloseModal(false)}
+        >
+          Cancel
+        </button>
+      )} */}
     </form>
   );
 };
