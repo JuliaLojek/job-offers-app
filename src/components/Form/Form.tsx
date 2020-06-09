@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
 import { ACTION_ADD_OFFER } from "../../store/modules/actions";
 import { OfferModel } from "../../models/models";
+import { validateInput, handleInputChange } from "./FormUtils";
 
 const Form: React.FC = () => {
   const [companyInput, setCompanyInput] = useState("");
@@ -21,38 +22,12 @@ const Form: React.FC = () => {
   const addNewOffer = (newOffer: OfferModel) =>
     dispatch(ACTION_ADD_OFFER(newOffer));
 
-  const errorMsg = "Fill out this field. Don't use any special characters.";
-
-  const validateInput = (input: string, isCommaAccepted?: boolean) => {
-    let isValid = true;
-    isValid = isValid && input.trim().length > 0;
-    if (isCommaAccepted) {
-      isValid = isValid && !input.match(/[^a-zA-Z0-9, ]/g);
-    } else {
-      isValid = isValid && !input.match(/[^a-zA-Z0-9 ]/g);
-    }
-    return isValid;
-  };
-
   const clearInputs = () => {
     setCompanyInput("");
     setCityInput("");
     setReqsInput("");
     setNotesInput("");
     setIsBtnActive(false);
-  };
-
-  const handleInputChange = (
-    event: React.FormEvent<HTMLInputElement>,
-    inputCallback: (value: React.SetStateAction<string>) => void,
-    errorCallback: (value: React.SetStateAction<string>) => void
-  ) => {
-    inputCallback(event.currentTarget.value);
-    if (!validateInput(event.currentTarget.value)) {
-      errorCallback(errorMsg);
-    } else {
-      errorCallback("");
-    }
   };
 
   const handleReqsInputChange = (
@@ -102,7 +77,6 @@ const Form: React.FC = () => {
 
   useEffect(() => {
     handleBtnChange();
-    console.log("rerendered");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [companyInput, cityInput, reqsInput, companyError, cityError, reqsError]);
 
