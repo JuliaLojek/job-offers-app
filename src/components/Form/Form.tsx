@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Form.module.css";
-import { useDispatch } from "react-redux";
-import { ACTION_ADD_OFFER } from "../../store/modules/actions";
 import { OfferModel } from "../../models/models";
-import { validateInput, handleInputChange } from "./FormUtils";
+import {
+  validateInput,
+  handleInputChange,
+  handleReqsInputChange,
+} from "./FormUtils";
 
-const Form: React.FC = () => {
-  const [companyInput, setCompanyInput] = useState("");
-  const [cityInput, setCityInput] = useState("");
-  const [reqsInput, setReqsInput] = useState("");
-  const [notesInput, setNotesInput] = useState("");
+interface FormProps {
+  mainBtnText: string;
+  mainBtnAction: Function;
+  optionalBtnText?: string;
+  optionalBtnAction?: Function;
+  id?: number;
+  company?: string;
+  city?: string;
+  req?: string;
+  notes?: string;
+}
+
+const Form: React.FC<FormProps> = (props) => {
+  const [companyInput, setCompanyInput] = useState(
+    props.company ? props.company : ""
+  );
+  const [cityInput, setCityInput] = useState(props.city ? props.city : "");
+  const [reqsInput, setReqsInput] = useState(props.req ? props.req : "");
+  const [notesInput, setNotesInput] = useState(props.notes ? props.notes : "");
 
   const [isBtnActive, setIsBtnActive] = useState(false);
 
@@ -17,9 +33,7 @@ const Form: React.FC = () => {
   const [cityError, setCityError] = useState("");
   const [reqsError, setReqsError] = useState("");
 
-  const dispatch = useDispatch();
-  const addNewOffer = (newOffer: OfferModel) =>
-    dispatch(ACTION_ADD_OFFER(newOffer));
+  const mainBtnAction = props.mainBtnAction;
 
   const clearInputs = () => {
     setCompanyInput("");
@@ -27,17 +41,6 @@ const Form: React.FC = () => {
     setReqsInput("");
     setNotesInput("");
     setIsBtnActive(false);
-  };
-
-  const handleReqsInputChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setReqsInput(event.currentTarget.value);
-    if (!validateInput(event.currentTarget.value, true)) {
-      setReqsError("Fill out this field. Use commas to separate requirements.");
-    } else {
-      setReqsError("");
-    }
   };
 
   const handleBtnChange = () => {
@@ -69,8 +72,14 @@ const Form: React.FC = () => {
         req: reqsInput.split(",").map((req) => req.trim()),
         notes: notesInput.trim(),
       };
-      addNewOffer(newOffer);
+      mainBtnAction(newOffer);
       clearInputs();
+    }
+  };
+
+  const handleOptionalButtonClick = () => {
+    if (props.optionalBtnAction) {
+      props.optionalBtnAction();
     }
   };
 
@@ -118,7 +127,9 @@ const Form: React.FC = () => {
         className={styles.input + " " + styles.textarea}
         placeholder="enter requirements separated by commas"
         maxLength={240}
-        onChange={(event) => handleReqsInputChange(event)}
+        onChange={(event) =>
+          handleReqsInputChange(event, setReqsInput, setReqsError)
+        }
       />
       <p className={styles.errorBox}>{reqsError}</p>
 
@@ -144,14 +155,11 @@ const Form: React.FC = () => {
       >
         Add offer
       </button>
-      {/* {props.secondaryBtn && (
-        <button
-          className={styles.btn}
-          onClick={() => props.handleCloseModal(false)}
-        >
+      {props.optionalBtnText && props.optionalBtnAction && (
+        <button className={styles.btn} onClick={handleOptionalButtonClick}>
           Cancel
         </button>
-      )} */}
+      )}
     </form>
   );
 };

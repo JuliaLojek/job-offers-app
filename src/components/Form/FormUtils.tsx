@@ -23,3 +23,16 @@ export const handleInputChange = (
     errorCallback("");
   }
 };
+
+export const handleReqsInputChange = (
+  event: React.ChangeEvent<HTMLTextAreaElement>,
+  inputCallback: (value: React.SetStateAction<string>) => void,
+  errorCallback: (value: React.SetStateAction<string>) => void
+) => {
+  inputCallback(event.currentTarget.value);
+  if (!validateInput(event.currentTarget.value, true)) {
+    errorCallback("Fill out this field. Use commas to separate requirements.");
+  } else {
+    errorCallback("");
+  }
+};
