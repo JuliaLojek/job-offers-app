@@ -28,7 +28,7 @@ const OfferCard: React.FC<OfferModel> = (props) => {
         </p>
         <div className={styles.editPart}>
           <p className={styles.date}>
-            added: {moment(id).format("DD.MM.YYYY")}
+            added: {moment(id).format("DD.MM.YYYY, HH:mm")}
           </p>
           <div>
             <div

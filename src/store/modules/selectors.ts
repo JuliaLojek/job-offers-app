@@ -9,9 +9,18 @@ export const selectAllOffers = (state: StateModel) => {
   return state.offersList;
 };
 
+export const selectAllOffersFromNewest = (state: StateModel) => {
+  return state.offersList.sort((a: OfferModel, b: OfferModel) => b.id - a.id);
+};
+
+export const selectAllOffersFromOldest = (state: StateModel) => {
+  return state.offersList.sort((a: OfferModel, b: OfferModel) => a.id - b.id);
+};
+
 export const selectFilteredOffers = (state: StateModel) => {
   return state.offersList.filter((offer: OfferModel) => {
     return (
+      offer.company.toLowerCase().includes(state.searchPhrase.toLowerCase()) ||
       offer.city.toLowerCase().includes(state.searchPhrase.toLowerCase()) ||
       offer.req
         .join("")

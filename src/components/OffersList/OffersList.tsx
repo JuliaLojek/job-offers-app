@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ACTION_FETCH_OFFERS } from "../../store/modules/actions";
 import { StateModel } from "../../store/modules/models";
 import {
-  selectAllOffers,
   selectFilteredOffers,
   selectSearchPhrase,
+  selectAllOffersFromNewest,
+  selectAllOffersFromOldest,
 } from "../../store/modules/selectors";
 import styles from "./OffersList.module.css";
 import OfferCard from "../OfferCard/OfferCard";
@@ -13,15 +14,24 @@ import OfferCard from "../OfferCard/OfferCard";
 const OffersList: React.FC = () => {
   const dispatch = useDispatch();
   const fetchOffersList = () => dispatch(ACTION_FETCH_OFFERS());
-  const searchResults = useSelector((state: StateModel) =>
-    selectFilteredOffers(state)
+
+  const [sortFromNewest, setSortFromNewest] = useState(true);
+
+  const allOffers = useSelector((state: StateModel) =>
+    sortFromNewest
+      ? selectAllOffersFromNewest(state)
+      : selectAllOffersFromOldest(state)
   );
   const searchPhrase = useSelector((state: StateModel) =>
     selectSearchPhrase(state)
   );
-  const allOffers = useSelector((state: StateModel) => selectAllOffers(state));
+  const searchResults = useSelector((state: StateModel) =>
+    selectFilteredOffers(state)
+  );
   const offersToDisplay = searchPhrase ? searchResults : allOffers;
-  const infoToDipslay = searchPhrase ? "No matches!" : "You don't have any offers saved yet. Add some!";
+  const infoToDipslay = searchPhrase
+    ? "No matches!"
+    : "You don't have any offers saved yet. Add some!";
 
   useEffect(() => {
     fetchOffersList();
@@ -35,6 +45,29 @@ const OffersList: React.FC = () => {
       ) : (
         <h3 className={styles.title}>All offers:</h3>
       )}
+
+      <div className={styles.btnGroup}>
+        <button
+          onClick={() => setSortFromNewest(true)}
+          className={
+            sortFromNewest
+              ? [styles.btn, styles.leftBtn, styles.activeBtn].join(" ")
+              : [styles.btn, styles.leftBtn].join(" ")
+          }
+        >
+          newest
+        </button>
+        <button
+          onClick={() => setSortFromNewest(false)}
+          className={
+            sortFromNewest
+              ? [styles.btn, styles.rightBtn].join(" ")
+              : [styles.btn, styles.rightBtn, styles.activeBtn].join(" ")
+          }
+        >
+          oldest
+        </button>
+      </div>
 
       <div className={styles.listBox}>
         {offersToDisplay.length === 0 ? (

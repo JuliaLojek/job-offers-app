@@ -10,6 +10,37 @@
   text-align: center;
 }
 
+.btnGroup {
+  text-align: center;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 4px 10px;
+  background: #fff;
+  border: var(--borders-thin);
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.leftBtn {
+  border-right: none;
+  border-radius: var(--corners-left);
+}
+
+.rightBtn {
+  border-radius: var(--corners-right);
+}
+
+.activeBtn {
+  background: var(--main-color);
+}
+
+.btn:focus {
+  outline: none;
+}
+
 .listBox {
   margin-top: 20px;
 }

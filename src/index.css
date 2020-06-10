@@ -5,7 +5,10 @@
   --third-color: #fff;
   --error-color: #ac172f;
   --corners: 16px;
+  --corners-left: 16px 0 0 16px;
+  --corners-right: 0 16px 16px 0;
   --borders: 2px solid var(--main-color);
+  --borders-thin: 1px solid var(--main-color);
   --borders2: 2px solid var(--secondary-color);
 }
 
