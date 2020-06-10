@@ -1,0 +1,28 @@
+.modalBackground {
+  background: var(--main-color-op);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal {
+  font-size: 18px;
+  background: #fff;
+  border-radius: var(--corners);
+  padding: 24px 16px;
+  width: 90%;
+  max-width: 800px;
+}
+
+.text {
+  margin-bottom: 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}

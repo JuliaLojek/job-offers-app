@@ -66,10 +66,10 @@ const Form: React.FC<FormProps> = (props) => {
       validateInput(reqsInput, true)
     ) {
       const newOffer: OfferModel = {
-        id: Date.now(),
-        company: companyInput.trim(),
-        city: cityInput.trim(),
-        req: reqsInput.split(",").map((req) => req.trim()),
+        id: props.id || Date.now(),
+        company: companyInput.trim().toUpperCase(),
+        city: cityInput.trim().toUpperCase(),
+        req: reqsInput.split(",").map((req) => req.trim().toLowerCase()),
         notes: notesInput.trim(),
       };
       mainBtnAction(newOffer);
@@ -153,11 +153,11 @@ const Form: React.FC<FormProps> = (props) => {
         ].join(" ")}
         type="submit"
       >
-        Add offer
+        {props.mainBtnText}
       </button>
       {props.optionalBtnText && props.optionalBtnAction && (
         <button className={styles.btn} onClick={handleOptionalButtonClick}>
-          Cancel
+          {props.optionalBtnText}
         </button>
       )}
     </form>

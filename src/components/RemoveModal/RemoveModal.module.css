@@ -23,6 +23,8 @@
 
 .text {
   margin: 12px auto;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .btn {
