@@ -1,6 +1,6 @@
 .mainBox {
-  /* background: var(--main-color); */
   margin: 8px auto;
+  margin-bottom: 48px;
   padding-top: 20px;
   width: 90%;
   max-width: 800px;

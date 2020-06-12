@@ -7,6 +7,13 @@
   padding-top: 20px;
 }
 
+.infoBox {
+  border: var(--borders);
+  border-radius: var(--corners);
+  padding: 16px;
+  text-align: center;
+}
+
 @media (min-width: 800px) {
   .main {
     margin: 76px 8px 8px 224px;
