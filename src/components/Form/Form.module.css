@@ -8,6 +8,7 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+  background: #fff;
 }
 
 .input {
@@ -48,12 +49,12 @@
 
 .inactiveBtn {
   cursor: auto;
-  color: var(--main-color);
+  color: var(--grey);
+  border: var(--borders-grey);
 }
 
 .mainBtn {
   background: var(--secondary-color);
-  color: #fff;
 }
 
 .btn:focus {

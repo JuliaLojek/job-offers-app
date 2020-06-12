@@ -14,6 +14,7 @@
 .modal {
   font-size: 18px;
   background: #fff;
+  border: var(--borders);
   border-radius: var(--corners);
   padding: 48px 16px;
   width: 90%;
@@ -40,7 +41,6 @@
 
 .mainBtn {
   background: var(--secondary-color);
-  color: #fff;
 }
 
 .btn:focus {

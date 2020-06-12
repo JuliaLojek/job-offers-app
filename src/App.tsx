@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/Header/Header";
 import AllOffers from "./routes/AllOffersPage";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import RequirementsPage from "./routes/RequirementsPage";
 import CitiesPage from "./routes/CitiesPage";
 import AddOfferPage from "./routes/AddOfferPage";
@@ -11,7 +11,7 @@ import DefaultPage from "./routes/DefaultPage";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Nav />
         <Switch>
@@ -21,7 +21,7 @@ function App() {
           <Route path="/cities" component={CitiesPage} />
           <Route component={DefaultPage} />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

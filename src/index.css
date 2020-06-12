@@ -1,15 +1,15 @@
 :root {
-  --main-color: #c8c8c8;
-  --main-color-op: rgba(200, 200, 200, 0.5);
-  --secondary-color: #41203b;
-  --third-color: #fff;
-  --error-color: #ac172f;
+  --main-color: #000;
+  --main-color-op: #fffd9396;
+  --secondary-color: #fffd93;
+  --grey: #a0a0a0;
+  --error-color: #ca1d3a;
   --corners: 16px;
   --corners-left: 16px 0 0 16px;
   --corners-right: 0 16px 16px 0;
-  --borders: 2px solid var(--main-color);
-  --borders-thin: 1px solid var(--main-color);
-  --borders2: 2px solid var(--secondary-color);
+  --borders: 3px solid var(--main-color);
+  --borders-grey: 3px solid var(--grey);
+  --borders-thin: 2px solid var(--main-color);
 }
 
 * {
@@ -28,7 +28,7 @@ body {
   font-family: "sans-serif";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  background: var(--secondary-color);
 }
 
 code {

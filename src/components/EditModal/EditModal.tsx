@@ -28,20 +28,17 @@ const EditModal: React.FC<EditModalProps> = (props) => {
 
   return (
     <div className={styles.modalBackground}>
-      <div className={styles.modal}>
-        <p className={styles.text}>Edit offer:</p>
-        <Form
-          mainBtnText="Edit offer"
-          mainBtnAction={handleEdit}
-          optionalBtnText="Cancel"
-          optionalBtnAction={actionCloseModal}
-          id={id}
-          company={company}
-          city={city}
-          req={req}
-          notes={notes}
-        />
-      </div>
+      <Form
+        mainBtnText="Edit offer"
+        mainBtnAction={handleEdit}
+        optionalBtnText="Cancel"
+        optionalBtnAction={actionCloseModal}
+        id={id}
+        company={company}
+        city={city}
+        req={req}
+        notes={notes}
+      />
     </div>
   );
 };

@@ -1,12 +1,13 @@
 .nav {
   display: none;
   flex-direction: column;
-  background: var(--main-color);
   position: fixed;
   width: calc(100% - 16px);
   top: 68px;
   border-radius: var(--corners);
   margin: 8px;
+  background: #fff;
+  border: var(--borders);
 }
 
 .navOpen {
@@ -20,7 +21,7 @@
   color: #000;
   text-decoration: none;
   padding: 16px;
-  border-bottom: 1px dashed #fff;
+  border-bottom: 2px dashed #000;
 }
 
 .link:last-child {

@@ -18,10 +18,15 @@
   cursor: pointer;
   padding: 4px 10px;
   background: #fff;
+  color: var(--grey);
   border: var(--borders-thin);
   font-size: 14px;
   font-weight: bold;
   margin-top: 12px;
+}
+
+.btn:hover {
+  color: var(--main-color);
 }
 
 .leftBtn {
@@ -35,6 +40,11 @@
 
 .activeBtn {
   background: var(--main-color);
+  color: #fff;
+}
+
+.activeBtn:hover {
+  color: #fff;
 }
 
 .btn:focus {

@@ -9,7 +9,6 @@
 
 .company {
   font-size: 20px;
-  color: var(--secondary-color);
 }
 
 .city {
@@ -34,9 +33,9 @@
   width: 64px;
   position: absolute;
   top: -4px;
-  left: -54px;
+  left: -64px;
   text-align: center;
-  background: var(--main-color);
+  background: var(--secondary-color);
   border-radius: var(--corners);
   font-size: 14px;
   padding: 4px;
