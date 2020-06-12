@@ -23,7 +23,7 @@
 
 .input:focus {
   outline: none;
-  border-bottom: 2px solid var(--secondary-color);
+  border-bottom: 4px solid var(--main-color);
 }
 
 .textarea {
