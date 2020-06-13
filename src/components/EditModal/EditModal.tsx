@@ -10,12 +10,13 @@ interface EditModalProps {
   company: string;
   city: string;
   req: string;
+  link: string;
   notes: string;
   handleCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const EditModal: React.FC<EditModalProps> = (props) => {
-  const { id, company, city, req, notes, handleCloseModal } = props;
+  const { id, company, city, req, link, notes, handleCloseModal } = props;
   const dispatch = useDispatch();
   const editOffer = (offer: OfferModel) => dispatch(ACTION_EDIT_OFFER(offer));
   const handleEdit = (offer: OfferModel) => {
@@ -37,6 +38,7 @@ const EditModal: React.FC<EditModalProps> = (props) => {
         company={company}
         city={city}
         req={req}
+        link={link}
         notes={notes}
       />
     </div>

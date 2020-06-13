@@ -16,6 +16,7 @@ interface FormProps {
   company?: string;
   city?: string;
   req?: string;
+  link?: string;
   notes?: string;
 }
 
@@ -25,6 +26,7 @@ const Form: React.FC<FormProps> = (props) => {
   );
   const [cityInput, setCityInput] = useState(props.city ? props.city : "");
   const [reqsInput, setReqsInput] = useState(props.req ? props.req : "");
+  const [linkInput, setLinkInput] = useState(props.link ? props.link : "");
   const [notesInput, setNotesInput] = useState(props.notes ? props.notes : "");
 
   const [isBtnActive, setIsBtnActive] = useState(false);
@@ -39,6 +41,7 @@ const Form: React.FC<FormProps> = (props) => {
     setCompanyInput("");
     setCityInput("");
     setReqsInput("");
+    setLinkInput("");
     setNotesInput("");
     setIsBtnActive(false);
   };
@@ -70,6 +73,7 @@ const Form: React.FC<FormProps> = (props) => {
         company: companyInput.trim().toUpperCase(),
         city: cityInput.trim().toUpperCase(),
         req: reqsInput.split(",").map((req) => req.trim().toLowerCase()),
+        link: linkInput.trim(),
         notes: notesInput.trim(),
       };
       mainBtnAction(newOffer);
@@ -91,7 +95,7 @@ const Form: React.FC<FormProps> = (props) => {
   return (
     <form className={styles.formBox} onSubmit={handleSubmit}>
       <label className={styles.label} htmlFor="companyName">
-        Company name:
+        Company name*:
       </label>
       <input
         type="text"
@@ -105,7 +109,7 @@ const Form: React.FC<FormProps> = (props) => {
       <p className={styles.errorBox}>{companyError}</p>
 
       <label className={styles.label} htmlFor="cityName">
-        City name:
+        City name*:
       </label>
       <input
         type="text"
@@ -119,7 +123,7 @@ const Form: React.FC<FormProps> = (props) => {
       <p className={styles.errorBox}>{cityError}</p>
 
       <label className={styles.label} htmlFor="req">
-        Job requirements:
+        Job requirements*:
       </label>
       <textarea
         id="req"
@@ -132,6 +136,20 @@ const Form: React.FC<FormProps> = (props) => {
         }
       />
       <p className={styles.errorBox}>{reqsError}</p>
+
+      <label className={styles.label} htmlFor="link">
+        Link:
+      </label>
+      <input
+        type="text"
+        id="link"
+        value={linkInput}
+        className={styles.input}
+        onChange={(event) =>
+          setLinkInput(event.target.value)
+        }
+      />
+      <p className={styles.errorBox}></p>
 
       <label className={styles.label} htmlFor="notes">
         Notes:
@@ -160,6 +178,7 @@ const Form: React.FC<FormProps> = (props) => {
           {props.optionalBtnText}
         </button>
       )}
+      <p className={styles.text}>*required fields</p>
     </form>
   );
 };

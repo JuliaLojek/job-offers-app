@@ -10,13 +10,25 @@ import EditModal from "../EditModal/EditModal";
 const OfferCard: React.FC<OfferModel> = (props) => {
   const [isEditModalActive, setIsEditModalActive] = useState(false);
   const [isRemoveModalActive, setIsRemoveModalActive] = useState(false);
-  const { id, company, city, req, notes } = props;
+  const { id, company, city, req, link, notes } = props;
   const reqAsString = req.join(", ");
 
   return (
     <React.Fragment>
       <div className={styles.card}>
-        <h4 className={styles.company}>{company}</h4>
+        {link ? (
+          <a
+            href={link}
+            className={styles.link}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <h4 className={styles.company}>{company}</h4>
+          </a>
+        ) : (
+          <h4 className={styles.company}>{company}</h4>
+        )}
+
         <h5 className={styles.city}>{city}</h5>
         <p className={styles.text}>
           <b>Requirements: </b>
@@ -58,6 +70,7 @@ const OfferCard: React.FC<OfferModel> = (props) => {
           company={company}
           city={city}
           req={reqAsString}
+          link={link}
           notes={notes}
           handleCloseModal={setIsEditModalActive}
         />

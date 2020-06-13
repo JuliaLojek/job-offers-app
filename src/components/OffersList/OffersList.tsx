@@ -76,7 +76,7 @@ const OffersList: React.FC = () => {
           </div>
         ) : (
           offersToDisplay.map((offer) => {
-            const { id, company, city, req, notes } = offer;
+            const { id, company, city, req, link, notes } = offer;
             return (
               <OfferCard
                 key={id}
@@ -84,6 +84,7 @@ const OffersList: React.FC = () => {
                 company={company}
                 city={city}
                 req={req}
+                link={link}
                 notes={notes}
               />
             );

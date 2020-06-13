@@ -3,5 +3,6 @@ export interface OfferModel {
   company: string;
   city: string;
   req: string[];
+  link: string;
   notes: string;
 }
