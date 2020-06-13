@@ -31,7 +31,7 @@
 .btn {
   cursor: pointer;
   padding: 8px;
-  background: #fff;
+  background: var(--secondary-color);
   border-radius: var(--corners);
   border: var(--borders);
   font-size: 18px;
@@ -40,7 +40,7 @@
 }
 
 .mainBtn {
-  background: var(--secondary-color);
+  background: var(--third-color);
 }
 
 .btn:focus {

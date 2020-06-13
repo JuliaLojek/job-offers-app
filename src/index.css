@@ -1,15 +1,15 @@
 :root {
   --main-color: #551a4f;
-  --main-color-op: #d0e1eb96;
-  --secondary-color: #d0e1eb;
-  --third-color: #c49dc0;
+  --main-color-op: #b0c5d196;
+  --secondary-color: #dce4e7;
+  --third-color: #aebcc5;
   --grey: #a0a0a0;
   --error-color: #ca1d3a;
   --corners: 16px;
   --corners-left: 16px 0 0 16px;
   --corners-right: 0 16px 16px 0;
   --borders: 2px solid var(--main-color);
-  --borders-grey: 3px solid var(--grey);
+  --borders-grey: 2px solid var(--grey);
   --borders-thin: 2px solid var(--main-color);
 }
 
