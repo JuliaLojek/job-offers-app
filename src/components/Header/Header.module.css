@@ -5,13 +5,11 @@
   align-items: center;
   position: fixed;
   top: 0;
-  width: calc(100% - 16px);
+  width: 100%;
   height: 60px;
   padding: 0 16px;
-  background: #fff;
-  border: var(--borders);
-  border-radius: var(--corners);
-  margin: 8px;
+  border-bottom: var(--borders);
+  background: var(--third-color);
 }
 
 .title {

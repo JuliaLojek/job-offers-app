@@ -3,10 +3,10 @@
   flex-direction: column;
   position: fixed;
   width: calc(100% - 16px);
-  top: 68px;
+  top: 60px;
   border-radius: var(--corners);
   margin: 8px;
-  background: #fff;
+  background: var(--third-color);
   border: var(--borders);
 }
 
@@ -21,7 +21,7 @@
   color: #000;
   text-decoration: none;
   padding: 16px;
-  border-bottom: 2px dashed #000;
+  border-bottom: 2px dashed var(--main-color);
 }
 
 .link:last-child {

@@ -1,13 +1,14 @@
 :root {
   --main-color: #551a4f;
-  --main-color-op: #fffd9396;
-  --secondary-color: #cee7eb;
+  --main-color-op: #d0e1eb96;
+  --secondary-color: #d0e1eb;
+  --third-color: #c49dc0;
   --grey: #a0a0a0;
   --error-color: #ca1d3a;
   --corners: 16px;
   --corners-left: 16px 0 0 16px;
   --corners-right: 0 16px 16px 0;
-  --borders: 3px solid var(--main-color);
+  --borders: 2px solid var(--main-color);
   --borders-grey: 3px solid var(--grey);
   --borders-thin: 2px solid var(--main-color);
 }

@@ -22,10 +22,13 @@ const OfferCard: React.FC<OfferModel> = (props) => {
           <b>Requirements: </b>
           {reqAsString}
         </p>
-        <p className={styles.text}>
-          <b>Notes: </b>
-          {notes}
-        </p>
+        {notes && (
+          <p className={styles.text}>
+            <b>Notes: </b>
+            {notes}
+          </p>
+        )}
+
         <div className={styles.editPart}>
           <p className={styles.date}>
             added: {moment(id).format("DD.MM.YYYY, HH:mm")}
