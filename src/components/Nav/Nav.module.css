@@ -8,6 +8,7 @@
   margin: 8px;
   background: var(--third-color);
   border: var(--borders);
+  z-index: 2;
 }
 
 .navOpen {

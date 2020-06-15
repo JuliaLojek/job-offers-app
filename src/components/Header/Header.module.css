@@ -10,6 +10,7 @@
   padding: 0 16px;
   border-bottom: var(--borders);
   background: var(--third-color);
+  z-index: 3;
 }
 
 .title {
