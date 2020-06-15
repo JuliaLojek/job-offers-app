@@ -8,6 +8,9 @@ export enum ACTION_TYPES {
   EDIT_OFFER = "EDIT_OFFER",
   DELETE_OFFER = "DELETE_OFFER",
   SET_SEARCH_PHRASE = "SET_SEARCH_PHRASE",
+  SHOW_ADDED_INFO = "SHOW_ADDED_INFO",
+  SHOW_EDITED_INFO = "SHOW_EDITED_INFO",
+  SHOW_DELETED_INFO = "SHOW_DELETED_INFO",
 }
 
 export interface ActionModel {
@@ -19,4 +22,7 @@ export interface StateModel {
   isNavOpen: boolean;
   offersList: OfferModel[];
   searchPhrase: string;
+  addedInfo: boolean;
+  editedInfo: boolean;
+  deletedInfo: boolean;
 }

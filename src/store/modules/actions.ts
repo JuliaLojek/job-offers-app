@@ -97,3 +97,24 @@ export const ACTION_SET_SEARCH_PHRASE = (phrase: string) => {
     value: phrase,
   };
 };
+
+export const ACTION_SHOW_ADDED_INFO = (value: boolean) => {
+  return {
+    type: ACTION_TYPES.SHOW_ADDED_INFO,
+    value: value,
+  };
+};
+
+export const ACTION_SHOW_EDITED_INFO = (value: boolean) => {
+  return {
+    type: ACTION_TYPES.SHOW_EDITED_INFO,
+    value: value,
+  };
+};
+
+export const ACTION_SHOW_DELETED_INFO = (value: boolean) => {
+  return {
+    type: ACTION_TYPES.SHOW_DELETED_INFO,
+    value: value,
+  };
+};
