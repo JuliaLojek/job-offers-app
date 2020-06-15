@@ -1,8 +1,8 @@
 :root {
   --main-color: #000;
-  --main-color-op: #dff0ef96;
-  --secondary-color: #dff0ef;
-  --third-color: #009c94;
+  --main-color-op: #fff2ef96;
+  --secondary-color: #fff2ef;
+  --third-color: #ff8b6d;
   --grey: #a0a0a0;
   --error-color: #ca1d3a;
   --corners: 16px;
