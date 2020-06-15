@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./RemoveModal.module.css";
 import { useDispatch } from "react-redux";
-import { ACTION_DELETE_OFFER } from "../../store/modules/actions";
+import { ACTION_DELETE_OFFER, ACTION_SHOW_DELETED_INFO } from "../../store/modules/actions";
 
 interface RemoveModalProps {
   id: number;
@@ -14,6 +14,8 @@ const RemoveModal: React.FC<RemoveModalProps> = (props) => {
   const handleRemove = (id: number) => {
     removeOffer(id);
     props.handleCloseModal(false);
+    dispatch(ACTION_SHOW_DELETED_INFO(true));
+    setTimeout(() => dispatch(ACTION_SHOW_DELETED_INFO(false)), 3000);
   }
 
   return (

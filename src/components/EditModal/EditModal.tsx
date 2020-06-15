@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./EditModal.module.css";
 import { useDispatch } from "react-redux";
-import { ACTION_EDIT_OFFER } from "../../store/modules/actions";
+import { ACTION_EDIT_OFFER, ACTION_SHOW_EDITED_INFO } from "../../store/modules/actions";
 import { OfferModel } from "../../models/models";
 import Form from "../Form/Form";
 
@@ -22,6 +22,8 @@ const EditModal: React.FC<EditModalProps> = (props) => {
   const handleEdit = (offer: OfferModel) => {
     editOffer(offer);
     props.handleCloseModal(false);
+    dispatch(ACTION_SHOW_EDITED_INFO(true));
+    setTimeout(() => dispatch(ACTION_SHOW_EDITED_INFO(false)), 3000);
   };
   const actionCloseModal = () => {
     handleCloseModal(false);
