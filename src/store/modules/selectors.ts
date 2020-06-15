@@ -34,3 +34,15 @@ export const selectFilteredOffers = (state: StateModel) => {
 export const selectSearchPhrase = (state: StateModel) => {
   return state.searchPhrase;
 };
+
+export const selectIsAddedInfoActive = (state: StateModel) => {
+  return state.addedInfo;
+};
+
+export const selectIsEditedInfoActive = (state: StateModel) => {
+  return state.editedInfo;
+};
+
+export const selectIsDeletedInfoActive = (state: StateModel) => {
+  return state.deletedInfo;
+};
