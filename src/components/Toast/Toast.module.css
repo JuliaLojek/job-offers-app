@@ -1,5 +1,5 @@
 .toast {
-  background: var(--secondary-color);
+  background: var(--third-color);
   border: var(--borders);
   border-radius: var(--corners);
   width: 240px;
@@ -9,8 +9,7 @@
   justify-content: space-between;
   position: fixed;
   top: -32px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  right: 8px;
   z-index: 1;
   transition: all ease 0.5s;
 }
