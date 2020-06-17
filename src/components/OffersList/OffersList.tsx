@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ACTION_FETCH_OFFERS } from "../../store/modules/actions";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { StateModel } from "../../store/modules/models";
 import {
   selectFilteredOffers,
@@ -12,8 +11,6 @@ import styles from "./OffersList.module.css";
 import OfferCard from "../OfferCard/OfferCard";
 
 const OffersList: React.FC = () => {
-  const dispatch = useDispatch();
-  const fetchOffersList = () => dispatch(ACTION_FETCH_OFFERS());
 
   const [sortFromNewest, setSortFromNewest] = useState(true);
 
@@ -32,11 +29,6 @@ const OffersList: React.FC = () => {
   const infoToDipslay = searchPhrase
     ? "No matches!"
     : "You don't have any offers saved yet. Add some!";
-
-  useEffect(() => {
-    fetchOffersList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <section className={styles.mainBox}>

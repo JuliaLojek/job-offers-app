@@ -46,3 +46,26 @@ export const selectIsEditedInfoActive = (state: StateModel) => {
 export const selectIsDeletedInfoActive = (state: StateModel) => {
   return state.deletedInfo;
 };
+
+export const selectCityChartData = (state: StateModel) => {
+  let dataObject: { [key: string]: number } = {};
+
+  state.offersList.forEach((offer) => {
+    dataObject[offer.city] = dataObject[offer.city] + 1 || 1;
+  });
+
+  const dataArray = Object.entries(dataObject).map(([city, value]) => {
+    return { cityName: city, value };
+  });
+
+  interface CityData {
+    cityName: string;
+    value: number;
+  }
+
+  const data = dataArray
+    .sort((a: CityData, b: CityData) => b.value - a.value)
+    .slice(0, 10);
+
+  return data;
+};
