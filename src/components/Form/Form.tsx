@@ -72,7 +72,7 @@ const Form: React.FC<FormProps> = (props) => {
         id: props.id || Date.now(),
         company: companyInput.trim().toUpperCase(),
         city: cityInput.trim().toUpperCase(),
-        req: reqsInput.split(",").map((req) => req.trim().toLowerCase()),
+        req: reqsInput.split(",").map((req) => req.trim().toLowerCase()).filter((req) => req.length !== 0),
         link: linkInput.trim(),
         notes: notesInput.trim(),
       };

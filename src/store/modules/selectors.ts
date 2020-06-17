@@ -47,25 +47,33 @@ export const selectIsDeletedInfoActive = (state: StateModel) => {
   return state.deletedInfo;
 };
 
-export const selectCityChartData = (state: StateModel) => {
+const offersToChartData = (dataItems: string[]) => {
   let dataObject: { [key: string]: number } = {};
-
-  state.offersList.forEach((offer) => {
-    dataObject[offer.city] = dataObject[offer.city] + 1 || 1;
+  dataItems.forEach((dataItem) => {
+    dataObject[dataItem] = dataObject[dataItem] + 1 || 1;
   });
-
-  const dataArray = Object.entries(dataObject).map(([city, value]) => {
-    return { cityName: city, value };
+  const dataArray = Object.entries(dataObject).map(([name, value]) => {
+    return { name, value };
   });
-
-  interface CityData {
-    cityName: string;
+  interface ChartData {
+    name: string;
     value: number;
   }
-
   const data = dataArray
-    .sort((a: CityData, b: CityData) => b.value - a.value)
+    .sort((a: ChartData, b: ChartData) => b.value - a.value)
     .slice(0, 10);
-
   return data;
+};
+
+export const selectCityChartData = (state: StateModel) => {
+  const cities = state.offersList.map(offer => offer.city);
+  return offersToChartData(cities);
+};
+
+export const selectReqChartData = (state: StateModel) => {
+  let reqs: string[] = [];
+  state.offersList.forEach(offer => {
+    reqs = [...reqs, ...offer.req];
+  });
+  return offersToChartData(reqs);
 };
