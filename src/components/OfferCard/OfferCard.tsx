@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import styles from "./OfferCard.module.css";
 import { OfferModel } from "../../models/models";
-import editBtn from "../../img/icons8-edit-g.png";
-import removeBtn from "../../img/icons8-remove-g.png";
 import moment from "moment";
 import RemoveModal from "../RemoveModal/RemoveModal";
 import EditModal from "../EditModal/EditModal";
@@ -51,14 +49,14 @@ const OfferCard: React.FC<OfferModel> = (props) => {
               onClick={() => setIsEditModalActive(true)}
             >
               <p className={styles.imgInfo}>edit</p>
-              <img className={styles.img} src={editBtn} alt="edit" />
+              <div className={[styles.img, styles.imgEdit].join(" ")} />
             </div>
             <div
               className={styles.imgWrap}
               onClick={() => setIsRemoveModalActive(true)}
             >
               <p className={styles.imgInfo}>remove</p>
-              <img className={styles.img} src={removeBtn} alt="remove" />
+              <div className={[styles.img, styles.imgDelete].join(" ")} />
             </div>
           </div>
         </div>

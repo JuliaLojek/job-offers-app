@@ -48,8 +48,27 @@
 
 .img {
   height: 18px;
+  width: 18px;
+  background-repeat: no-repeat;
+  background-size: contain;
   cursor: pointer;
   margin-left: 10px;
+}
+
+.imgEdit {
+  background-image: url("../../img/icons8-edit-g.png");
+}
+
+.imgEdit:hover {
+  background-image: url("../../img/icons8-edit.svg");
+}
+
+.imgDelete {
+  background-image: url("../../img/icons8-remove-g.png");
+}
+
+.imgDelete:hover {
+  background-image: url("../../img/icons8-remove.svg");
 }
 
 .date {
