@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/job-offers-app/static/css/main.7d48ecc8.chunk.css",
+    "main.js": "/job-offers-app/static/js/main.6f3f1608.chunk.js",
+    "main.js.map": "/job-offers-app/static/js/main.6f3f1608.chunk.js.map",
+    "runtime-main.js": "/job-offers-app/static/js/runtime-main.6605a75b.js",
+    "runtime-main.js.map": "/job-offers-app/static/js/runtime-main.6605a75b.js.map",
+    "static/js/2.88c1720a.chunk.js": "/job-offers-app/static/js/2.88c1720a.chunk.js",
+    "static/js/2.88c1720a.chunk.js.map": "/job-offers-app/static/js/2.88c1720a.chunk.js.map",
+    "index.html": "/job-offers-app/index.html",
+    "precache-manifest.5c318433aa67a2e24928e8ace2281c2a.js": "/job-offers-app/precache-manifest.5c318433aa67a2e24928e8ace2281c2a.js",
+    "service-worker.js": "/job-offers-app/service-worker.js",
+    "static/css/main.7d48ecc8.chunk.css.map": "/job-offers-app/static/css/main.7d48ecc8.chunk.css.map",
+    "static/js/2.88c1720a.chunk.js.LICENSE.txt": "/job-offers-app/static/js/2.88c1720a.chunk.js.LICENSE.txt",
+    "static/media/OfferCard.module.css": "/job-offers-app/static/media/icons8-remove.0a370b39.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6605a75b.js",
+    "static/js/2.88c1720a.chunk.js",
+    "static/css/main.7d48ecc8.chunk.css",
+    "static/js/main.6f3f1608.chunk.js"
+  ]
+}
