@@ -5,6 +5,14 @@
 ### SPA which helps you organize job offers, keep track of them, check statistics, save notes and links
 ----------------------
 
+![app-view](https://raw.githubusercontent.com/JuliaLojek/job-offers-app/master/screenshots/shot1.png)
+<br>
+![app-view](https://raw.githubusercontent.com/JuliaLojek/job-offers-app/master/screenshots/shot2.png)
+<br>
+![app-view](https://raw.githubusercontent.com/JuliaLojek/job-offers-app/master/screenshots/shot3.png)
+
+----------------------
+
 ### Technologies:
 - React
 - Redux
