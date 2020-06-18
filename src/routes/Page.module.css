@@ -14,8 +14,24 @@
   text-align: center;
 }
 
+/* chart pages */
+
+.titleBox {
+  text-align: center;
+}
+
+.chartBox {
+  margin: 0 auto;
+  margin-top: 48px;
+  max-width: 800px;
+}
+
+/* queries */
 @media (min-width: 800px) {
   .main {
     margin: 76px 8px 8px 224px;
+  }
+  .chartBox {
+    margin-top: 16px;
   }
 }

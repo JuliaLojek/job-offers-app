@@ -10,9 +10,16 @@ const CitiesPage: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <Chart data={data} />
+      <div className={styles.titleBox}>
+        <h2 className={styles.title}>Most common cities</h2>
+        <h3 className={styles.subtitle}>in your job offers</h3>
+      </div>
+
+      <div className={styles.chartBox}>
+        <Chart data={data} />
+      </div>
     </main>
-  )
-}
+  );
+};
 
 export default CitiesPage;

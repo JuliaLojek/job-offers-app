@@ -31,7 +31,7 @@ class CustomizedAxisTick extends PureComponent {
 
 const Chart = (props) => {
   return (
-    <ResponsiveContainer aspect={2} width="100%">
+    <ResponsiveContainer aspect={1.2} width="100%">
       <BarChart
         data={props.data}
         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
@@ -40,7 +40,7 @@ const Chart = (props) => {
         <XAxis
           dataKey="name"
           height={80}
-          axisLine={false}
+          axisLine={true}
           tick={<CustomizedAxisTick />}
           tickLine={false}
           interval={0}
