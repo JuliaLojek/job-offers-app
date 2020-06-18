@@ -1,6 +1,6 @@
 # My Job Offers
 
-### Check out the app [here]()
+### Check out the app [here](https://julialojek.github.io/job-offers-app/)
 
 ### SPA which helps you organize job offers, keep track of them, check statistics, save notes and links
 ----------------------
