@@ -15,9 +15,15 @@ const RequirementsPage: React.FC = () => {
         <h3 className={styles.subtitle}>in your job offers</h3>
       </div>
 
-      <div className={styles.chartBox}>
-        <Chart data={data} />
-      </div>
+      {data.length === 0 ? (
+        <div className={styles.infoBox}>
+          <p>You don't have any offers saved yet. Add some!</p>
+        </div>
+      ) : (
+        <div className={styles.chartBox}>
+          <Chart data={data} />
+        </div>
+      )}
     </main>
   );
 };
