@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { ACTION_TOGGLE_NAV } from "../../store/modules/actions";
 import styles from "./Header.module.css";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,10 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <h2 className={styles.title}>My Job Offers</h2>
+      <Link to="/" className={styles.link}>
+        <h2 className={styles.title}>My Job Offers</h2>
+      </Link>
+
       <div className={styles.hamburger} onClick={handleLinkClick}>
         <p>&#9776;</p>
       </div>
