@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "./components/Header/Header";
 import AllOffers from "./routes/AllOffersPage";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import RequirementsPage from "./routes/RequirementsPage";
 import CitiesPage from "./routes/CitiesPage";
 import AddOfferPage from "./routes/AddOfferPage";
@@ -21,17 +21,17 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter basename="/job-offers-app">
+      <HashRouter>
         <Header />
         <Nav />
         <Switch>
           <Route exact path="/" component={AllOffers} />
-          <Route path="/addoffer" component={AddOfferPage} />
-          <Route path="/requirements" component={RequirementsPage} />
-          <Route path="/cities" component={CitiesPage} />
+          <Route exact path="/addoffer" component={AddOfferPage} />
+          <Route exact path="/requirements" component={RequirementsPage} />
+          <Route exact path="/cities" component={CitiesPage} />
           <Route component={DefaultPage} />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
