@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Form.module.css";
 import { OfferModel } from "../../models/models";
-import {
-  validateInput,
-  handleInputChange,
-  handleReqsInputChange,
-} from "./FormUtils";
+import FormUI from "./FormUI";
 
 interface FormProps {
   mainBtnText: string;
@@ -28,14 +23,51 @@ const Form: React.FC<FormProps> = (props) => {
   const [reqsInput, setReqsInput] = useState(props.req ? props.req : "");
   const [linkInput, setLinkInput] = useState(props.link ? props.link : "");
   const [notesInput, setNotesInput] = useState(props.notes ? props.notes : "");
-
-  const [isBtnActive, setIsBtnActive] = useState(false);
-
+  
   const [companyError, setCompanyError] = useState("");
   const [cityError, setCityError] = useState("");
   const [reqsError, setReqsError] = useState("");
+  
+  const [isBtnActive, setBtnActive] = useState(false);
 
-  const mainBtnAction = props.mainBtnAction;
+  const validateInput = (input: string, isCommaAccepted?: boolean) => {
+    let isValid = true;
+    isValid = isValid && input.trim().length > 0;
+    if (isCommaAccepted) {
+      isValid = isValid && !input.match(/[^a-zA-Z0-9, ]/g);
+    } else {
+      isValid = isValid && !input.match(/[^a-zA-Z0-9 ]/g);
+    }
+    return isValid;
+  };
+
+  const handleInputChange = (
+    event: React.FormEvent<HTMLInputElement>,
+    inputCallback: (value: React.SetStateAction<string>) => void,
+    errorCallback: (value: React.SetStateAction<string>) => void
+  ) => {
+    inputCallback(event.currentTarget.value);
+    if (!validateInput(event.currentTarget.value)) {
+      errorCallback("Fill out this field. Don't use any special characters.");
+    } else {
+      errorCallback("");
+    }
+  };
+
+  const handleReqsInputChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+    inputCallback: (value: React.SetStateAction<string>) => void,
+    errorCallback: (value: React.SetStateAction<string>) => void
+  ) => {
+    inputCallback(event.currentTarget.value);
+    if (!validateInput(event.currentTarget.value, true)) {
+      errorCallback(
+        "Fill out this field. Use commas to separate requirements."
+      );
+    } else {
+      errorCallback("");
+    }
+  };
 
   const clearInputs = () => {
     setCompanyInput("");
@@ -43,7 +75,7 @@ const Form: React.FC<FormProps> = (props) => {
     setReqsInput("");
     setLinkInput("");
     setNotesInput("");
-    setIsBtnActive(false);
+    setBtnActive(false);
   };
 
   const handleBtnChange = () => {
@@ -55,9 +87,9 @@ const Form: React.FC<FormProps> = (props) => {
       !cityError &&
       !reqsError
     ) {
-      setIsBtnActive(true);
+      setBtnActive(true);
     } else {
-      setIsBtnActive(false);
+      setBtnActive(false);
     }
   };
 
@@ -72,11 +104,14 @@ const Form: React.FC<FormProps> = (props) => {
         id: props.id || Date.now(),
         company: companyInput.trim().toUpperCase(),
         city: cityInput.trim().toUpperCase(),
-        req: reqsInput.split(",").map((req) => req.trim().toLowerCase()).filter((req) => req.length !== 0),
+        req: reqsInput
+          .split(",")
+          .map((req) => req.trim().toLowerCase())
+          .filter((req) => req.length !== 0),
         link: linkInput.trim(),
         notes: notesInput.trim(),
       };
-      mainBtnAction(newOffer);
+      props.mainBtnAction(newOffer);
       clearInputs();
     }
   };
@@ -93,93 +128,32 @@ const Form: React.FC<FormProps> = (props) => {
   }, [companyInput, cityInput, reqsInput, companyError, cityError, reqsError]);
 
   return (
-    <form className={styles.formBox} onSubmit={handleSubmit}>
-      <label className={styles.label} htmlFor="companyName">
-        Company name*:
-      </label>
-      <input
-        type="text"
-        id="companyName"
-        value={companyInput}
-        className={styles.input}
-        onChange={(event) =>
-          handleInputChange(event, setCompanyInput, setCompanyError)
-        }
-      />
-      <p className={styles.errorBox}>{companyError}</p>
-
-      <label className={styles.label} htmlFor="cityName">
-        City name*:
-      </label>
-      <input
-        type="text"
-        id="cityName"
-        value={cityInput}
-        className={styles.input}
-        onChange={(event) =>
-          handleInputChange(event, setCityInput, setCityError)
-        }
-      />
-      <p className={styles.errorBox}>{cityError}</p>
-
-      <label className={styles.label} htmlFor="req">
-        Job requirements*:
-      </label>
-      <textarea
-        id="req"
-        value={reqsInput}
-        className={styles.input + " " + styles.textarea}
-        placeholder="enter requirements separated by commas"
-        maxLength={240}
-        onChange={(event) =>
-          handleReqsInputChange(event, setReqsInput, setReqsError)
-        }
-      />
-      <p className={styles.errorBox}>{reqsError}</p>
-
-      <label className={styles.label} htmlFor="link">
-        Link:
-      </label>
-      <input
-        type="text"
-        id="link"
-        value={linkInput}
-        className={styles.input}
-        onChange={(event) =>
-          setLinkInput(event.target.value)
-        }
-      />
-      <p className={styles.errorBox}></p>
-
-      <label className={styles.label} htmlFor="notes">
-        Notes:
-      </label>
-      <textarea
-        id="notes"
-        value={notesInput}
-        className={styles.input + " " + styles.textarea}
-        placeholder="additional notes, links, etc."
-        maxLength={240}
-        onChange={(event) => setNotesInput(event.target.value)}
-      />
-      <p className={styles.errorBox}></p>
-
-      <button
-        className={[
-          styles.btn,
-          isBtnActive ? styles.mainBtn : styles.inactiveBtn,
-        ].join(" ")}
-        type="submit"
-      >
-        {props.mainBtnText}
-      </button>
-      {props.optionalBtnText && props.optionalBtnAction && (
-        <button className={styles.btn} onClick={handleOptionalButtonClick}>
-          {props.optionalBtnText}
-        </button>
-      )}
-      <p className={styles.text}>*required fields</p>
-    </form>
+    <FormUI
+      handleSubmit={handleSubmit}
+      companyInput={companyInput}
+      handleInputChange={handleInputChange}
+      setCompanyInput={setCompanyInput}
+      setCompanyError={setCompanyError}
+      companyError={companyError}
+      cityInput={cityInput}
+      setCityInput={setCityInput}
+      setCityError={setCityError}
+      cityError={cityError}
+      reqsInput={reqsInput}
+      handleReqsInputChange={handleReqsInputChange}
+      setReqsInput={setReqsInput}
+      setReqsError={setReqsError}
+      reqsError={reqsError}
+      linkInput={linkInput}
+      setLinkInput={setLinkInput}
+      notesInput={notesInput}
+      setNotesInput={setNotesInput}
+      isBtnActive={isBtnActive}
+      mainBtnText={props.mainBtnText}
+      optionalBtnText={props.optionalBtnText}
+      optionalBtnAction={props.optionalBtnAction}
+      handleOptionalButtonClick={handleOptionalButtonClick}
+    />
   );
 };
 
