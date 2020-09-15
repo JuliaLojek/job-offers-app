@@ -31,7 +31,7 @@ const Nav: React.FC = () => {
         Top requirements
       </Link>
       <Link to="/cities" className={styles.link} onClick={handleLinkClick}>
-        Top cities
+        Top locations
       </Link>
     </nav>
   );

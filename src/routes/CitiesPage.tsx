@@ -11,7 +11,7 @@ const CitiesPage: React.FC = () => {
   return (
     <main className={styles.main}>
       <div className={styles.titleBox}>
-        <h2 className={styles.title}>Most common cities</h2>
+        <h2 className={styles.title}>Most common locations</h2>
         <h3 className={styles.subtitle}>in your job offers</h3>
       </div>
       {data.length === 0 ? (
