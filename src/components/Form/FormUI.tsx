@@ -55,7 +55,7 @@ const FormUI: React.FC<FormUIProps> = (props) => {
   } = props;
 
   return (
-    <form className={styles.formBox} onSubmit={handleSubmit}>
+    <form className={styles.formBox} onSubmit={handleSubmit} data-testid="form">
       <label className={styles.label} htmlFor="companyName">
         Company name*:
       </label>

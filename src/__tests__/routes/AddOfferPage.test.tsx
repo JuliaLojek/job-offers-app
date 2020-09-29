@@ -8,14 +8,22 @@ import reducer from "../../store/modules/reducer";
 
 describe("<AddOfferPage />", () => {
   test("should display a blank form", () => {
-    const { getByLabelText } = render(
+    const { getByTestId, getByLabelText } = render(
       <MemoryRouter>
         <Provider store={createStore(reducer)}>
           <AddOfferPage />
         </Provider>
       </MemoryRouter>
     );
-    const formElement = getByLabelText(/company name/i);
-    expect(formElement).toBeInTheDocument();
+    // const companyInput = getByLabelText(/company name/i);
+    // expect(companyInput).toBeInTheDocument();
+    const form = getByTestId("form");
+    expect(form).toHaveFormValues({
+      companyName: "",
+      cityName: "",
+      req: "",
+      link: "",
+      notes: "",
+    });
   });
 });
