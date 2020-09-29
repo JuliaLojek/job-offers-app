@@ -62,6 +62,7 @@ const FormUI: React.FC<FormUIProps> = (props) => {
       <input
         type="text"
         id="companyName"
+        name="companyName"
         value={companyInput}
         className={styles.input}
         onChange={(event) =>
@@ -76,6 +77,7 @@ const FormUI: React.FC<FormUIProps> = (props) => {
       <input
         type="text"
         id="cityName"
+        name="cityName"
         value={cityInput}
         className={styles.input}
         onChange={(event) =>
@@ -89,6 +91,7 @@ const FormUI: React.FC<FormUIProps> = (props) => {
       </label>
       <textarea
         id="req"
+        name="req"
         value={reqsInput}
         className={styles.input + " " + styles.textarea}
         placeholder="enter requirements separated by commas"
@@ -105,6 +108,7 @@ const FormUI: React.FC<FormUIProps> = (props) => {
       <input
         type="text"
         id="link"
+        name="link"
         value={linkInput}
         className={styles.input}
         onChange={(event) => setLinkInput(event.target.value)}
@@ -116,6 +120,7 @@ const FormUI: React.FC<FormUIProps> = (props) => {
       </label>
       <textarea
         id="notes"
+        name="notes"
         value={notesInput}
         className={styles.input + " " + styles.textarea}
         placeholder="additional notes, links, etc."
