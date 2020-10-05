@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import configureStore from "redux-mock-store";
 import AddOfferPage from "../../routes/AddOfferPage";
 import { Provider } from "react-redux";
@@ -10,16 +10,18 @@ const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 describe("<AddOfferPage />", () => {
-  test("should display a blank form", () => {
-    const { getByTestId } = render(
+  beforeEach(() => {
+    render(
       <MemoryRouter>
-        {/* <Provider store={createStore(reducer)}> */}
         <Provider store={mockStore()}>
           <AddOfferPage />
         </Provider>
       </MemoryRouter>
     );
-    const form = getByTestId("form");
+  });
+
+  test("should display a blank form", () => {
+    const form = screen.getByTestId("form");
     expect(form).toHaveFormValues({
       companyName: "",
       cityName: "",
@@ -30,17 +32,10 @@ describe("<AddOfferPage />", () => {
   });
 
   test("after filling in the required fields and submitting the form, the form should be blank again and the toast should appear", () => {
-    const { getByTestId, getByLabelText, getByText } = render(
-      <MemoryRouter>
-        <Provider store={mockStore()}>
-          <AddOfferPage />
-        </Provider>
-      </MemoryRouter>
-    );
-    const form = getByTestId("form");
-    const companyInput = getByLabelText(/company/i);
-    const cityInput = getByLabelText(/city/i);
-    const reqInput = getByLabelText(/req/i);
+    const form = screen.getByTestId("form");
+    const companyInput = screen.getByLabelText(/company/i);
+    const cityInput = screen.getByLabelText(/city/i);
+    const reqInput = screen.getByLabelText(/req/i);
 
     fireEvent.change(companyInput, { target: { value: "koala" } });
     fireEvent.change(cityInput, { target: { value: "barcelona" } });
@@ -56,6 +51,6 @@ describe("<AddOfferPage />", () => {
       notes: "",
     });
 
-    expect(getByText(/added/i)).toBeInTheDocument();
+    expect(screen.getByText(/added/i)).toBeInTheDocument();
   });
 });

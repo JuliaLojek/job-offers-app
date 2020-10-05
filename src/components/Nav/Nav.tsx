@@ -16,7 +16,7 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <nav className={isNavOpen ? styles.nav + " " + styles.navOpen : styles.nav}>
+    <nav className={isNavOpen ? styles.nav + " " + styles.navOpen : styles.nav} aria-label="main">
       <Link to="/" className={styles.link} onClick={handleLinkClick}>
         All offers
       </Link>
