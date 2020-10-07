@@ -23,15 +23,27 @@ describe("navigation works", () => {
 
   afterEach(cleanup);
 
-  test("redirects to 'add new offer page'", () => {
+  test("redirects to 'add new offer' page", () => {
     const link = screen.getByText(/add new offer/i);
     fireEvent.click(link);
     expect(screen.getByText(/required fields/i)).toBeInTheDocument();
   });
 
-  test("redirects to 'top requirements page'", () => {
+  test("redirects to 'top requirements' page", () => {
     const link = screen.getByText(/top requirements/i);
     fireEvent.click(link);
     expect(screen.getByText(/most common requirements/i)).toBeInTheDocument();
+  });
+
+  test("redirects to 'top locations' page", () => {
+    const link = screen.getByText(/top locations/i);
+    fireEvent.click(link);
+    expect(screen.getByText(/most common locations/i)).toBeInTheDocument();
+  });
+
+  test("redirects to 'all offers' page", () => {
+    const link = screen.getByText(/all offers/i);
+    fireEvent.click(link);
+    expect(screen.getByPlaceholderText(/search offers/i)).toBeInTheDocument();
   });
 });
