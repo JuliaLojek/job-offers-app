@@ -28,4 +28,10 @@ describe("navigation works", () => {
     fireEvent.click(link);
     expect(screen.getByText(/required fields/i)).toBeInTheDocument();
   });
+
+  test("redirects to 'top requirements page'", () => {
+    const link = screen.getByText(/top requirements/i);
+    fireEvent.click(link);
+    expect(screen.getByText(/most common requirements/i)).toBeInTheDocument();
+  });
 });
