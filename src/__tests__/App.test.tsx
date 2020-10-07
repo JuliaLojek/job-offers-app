@@ -27,5 +27,5 @@ describe("navigation works", () => {
     const link = screen.getByText(/add new offer/i);
     fireEvent.click(link);
     expect(screen.getByText(/required fields/i)).toBeInTheDocument();
-  })
+  });
 });
